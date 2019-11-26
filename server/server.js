@@ -54,7 +54,7 @@ app.prepare().then(() => {
         });
       });
     } catch {
-      throw new Error("URL resolve exception!\n" + e);
+      throw new Error("exception!\n" + e);
     }
   });
 

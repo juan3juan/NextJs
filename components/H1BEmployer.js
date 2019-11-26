@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EmployerForm from "./EmployerForm";
+//import { getRecord } from "../server/zoho/zohoApi";
+//import { getRecord } from "./zohoTestApi";
 
 function H1BEmployer(props) {
   const [companyUnits, setCompanyUnits] = useState([
@@ -27,6 +29,17 @@ function H1BEmployer(props) {
     firstName: "",
     lastName: ""
   });
+
+  // useEffect(() => {
+  //   let input = {};
+  //   input.module = "Contacts";
+  //   input.id = "3890818000007128013";
+  //   getRecord(input).then(function(response) {
+  //     response = JSON.parse(response.body);
+  //     response = response.data[0];
+  //     setFormContent(...formContent, { firstName: response.Email });
+  //   });
+  // });
 
   function handleChange({ target }) {
     setFormContent({
