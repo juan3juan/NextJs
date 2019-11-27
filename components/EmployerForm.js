@@ -17,8 +17,8 @@ function EmployerForm(props) {
               type="text"
               placeholder="First Name"
               id="firstName"
-              name="firstName"
-              value={props.formContent.firstName}
+              name="Full_Name"
+              value={props.formContent.Full_Name}
               onChange={props.onChange}
             />
             <TextInput

@@ -18,13 +18,13 @@ module.exports = {
     for (let i in data) {
       let record = data[i];
 
-      let { Email, name } = record;
+      let { Email, Full_Name } = record;
       if (typeof Module == "undefined") {
         Module = header;
       }
       result += `<tr>
           <td align="middle"> ${Email}</td>
-          <td align="middle"> ${name}</td>
+          <td align="middle"> ${Full_Name}</td>
           <tr />`;
     }
     result += `</tr>
