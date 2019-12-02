@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EmployerForm from "./EmployerForm";
 //import { getRecord } from "../server/zoho/zohoApi";
 //import { getRecord } from "./zohoTestApi";
-import { getRecord } from "../server/zoho/zohoApi";
+import { getRecord, saveRecord } from "../server/zoho/zohoApi";
 
 function H1BEmployer(props) {
   const [companyUnits, setCompanyUnits] = useState([
@@ -57,6 +57,11 @@ function H1BEmployer(props) {
       [target.name]: target.value
     });
   }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    saveRecord(formContent).then(() => {});
+  }
   return (
     <EmployerForm
       companyUnits={companyUnits}
@@ -65,6 +70,7 @@ function H1BEmployer(props) {
       yesOrNo={yesOrNo}
       formContent={formContent}
       onChange={handleChange}
+      onSubmit={handleSubmit}
     />
   );
 }

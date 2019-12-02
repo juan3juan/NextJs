@@ -44,9 +44,9 @@ app.prepare().then(() => {
               "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
             initialzie.getTokenOnetime(token);
           } else {
-            // getContacts(res);
+            getContacts(res);
             //saveRecordToZoho(res);
-            updateRecordToZoho(res);
+            //updateRecordToZoho(res);
           }
         });
       });
@@ -55,7 +55,7 @@ app.prepare().then(() => {
     }
   });
 
-  server.post("/createRecord", function(req, res) {
+  server.post("/saveRecord", function(req, res) {
     res.send("POST request to the homePage");
   });
 
@@ -68,10 +68,10 @@ app.prepare().then(() => {
     input.params = params;
     ZCRMRestClient.API.MODULES.get(input).then(function(response) {
       let data = JSON.parse(response.body).data;
-      // console.log(data);
+      //console.log(data);
       // let result = wrap.wrapresult(input.module, data);
       // res.set("Content-Type", "text/html");
-      //res.send(result);
+      // res.send(result);
       res.send(data);
     });
   }
