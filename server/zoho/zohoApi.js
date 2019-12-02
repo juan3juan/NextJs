@@ -19,9 +19,21 @@ export function saveRecord(record) {
       record
     })
   }).then(function(response) {
-    if (response.ok) return response.json();
+    if (response.ok) return response;
   });
 }
+
+// export function saveRecord(record) {
+//   return fetch("/saveRecord", {
+//     method: "POST",
+//     headers: { "content-type": "application/json" },
+//     body: JSON.stringify({
+//       record
+//     })
+//   }).then(function(response) {
+//     if (response.ok) return response.json();
+//   });
+// }
 
 // function saveRecordToZoho() {
 //   let input = {};
