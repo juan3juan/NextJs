@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EmployerForm from "./EmployerForm";
-//import { getRecord } from "../server/zoho/zohoApi";
-//import { getRecord } from "./zohoTestApi";
-import { getRecord, saveRecord } from "../server/zoho/zohoApi";
+//import { getRecord, saveRecord } from "../server/zoho/zohoApi";
+import * as zohoApi from "../server/zoho/zohoApi";
 
 function H1BEmployer(props) {
   const [companyUnits, setCompanyUnits] = useState([
@@ -42,7 +41,8 @@ function H1BEmployer(props) {
   //   });
   // });
   useEffect(() => {
-    getRecord().then(function(records) {
+    zohoApi.getRecordByID(props.id).then(function(records) {
+      //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
       console.log("records :");
       console.log(records[0]);
@@ -60,7 +60,7 @@ function H1BEmployer(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    saveRecord(formContent).then(() => {});
+    zohoApi.saveRecord(formContent).then(() => {});
   }
   return (
     <EmployerForm

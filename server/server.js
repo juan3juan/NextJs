@@ -11,12 +11,12 @@ const ZCRMRestClient = require("zcrmsdk");
 const mysql_util = require("zcrmsdk/lib/js/mysql/mysql_util");
 const initialzie = require("./zoho/Initialize");
 const wrap = require("./zoho/wrapresult");
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 app.prepare().then(() => {
   const server = express();
-  server.use(bodyParser.json());
-  server.use(bodyParser.urlencoded({ entended: true }));
+  // retrive post query parmas using express
+  server.use(express.json());
 
   server.post("/saveRecord", function(req, res) {
     let record = req.body.record;
@@ -82,21 +82,77 @@ app.prepare().then(() => {
     return app.render(req, res, "/a", req.query);
   });
 
-  server.get("/b", (req, res) => {
-    return app.render(req, res, "/b", req.query);
+  server.get("/b/:id", (req, res) => {
+    res.send(req.params.id);
+    //return app.render(req, res, "/b", req.query);
   });
 
+  server.param("id", function(req, res, next, name) {
+    let modifiedID = "333";
+    req.id = modifiedID;
+    next();
+  });
   server.get("/posts/:id", (req, res) => {
     console.log("post-req.query :");
     console.log(req.params);
     return app.render(req, res, "/posts", { id: req.params.id });
   });
 
+  server.get("/questionnaire/:id", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/questionnaire", { id: req.params.id });
+  });
+
+  server.get("/:id", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/", { id: req.params.id });
+  });
+
   server.get("/api/show", (req, res) => {
     return res.send("we made it!");
   });
 
-  server.get("/getRecord", function(req, res) {
+  // server.get("/getRecord", function(req, res) {
+  //   try {
+  //     ZCRMRestClient.initialize().then(function() {
+  //       mysql_util.getOAuthTokens().then(function(result) {
+  //         if (result == null || result.length === 0) {
+  //           //This token needs to be updated for initialization
+  //           let token =
+  //             "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
+  //           initialzie.getTokenOnetime(token);
+  //         } else {
+  //           getContacts(res);
+  //           //saveRecordToZoho(res);
+  //           //updateRecordToZoho(res);
+  //         }
+  //       });
+  //     });
+  //   } catch {
+  //     throw new Error("exception!\n" + e);
+  //   }
+  // });
+
+  function getContacts(res) {
+    let input = {};
+    input.module = "Contacts";
+    let params = {};
+    params.page = 0;
+    params.per_page = 100;
+    input.params = params;
+    ZCRMRestClient.API.MODULES.get(input).then(function(response) {
+      let data = JSON.parse(response.body).data;
+      //console.log(data);
+      // let result = wrap.wrapresult(input.module, data);
+      // res.set("Content-Type", "text/html");
+      // res.send(result);
+      res.send(data);
+    });
+  }
+
+  server.get("/getRecord/:id", function(req, res) {
     try {
       ZCRMRestClient.initialize().then(function() {
         mysql_util.getOAuthTokens().then(function(result) {
@@ -106,9 +162,7 @@ app.prepare().then(() => {
               "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
             initialzie.getTokenOnetime(token);
           } else {
-            getContacts(res);
-            //saveRecordToZoho(res);
-            //updateRecordToZoho(res);
+            getRecordByID(req.params.id, res);
           }
         });
       });
@@ -117,13 +171,12 @@ app.prepare().then(() => {
     }
   });
 
-  function getContacts(res) {
+  function getRecordByID(id, res) {
     let input = {};
     input.module = "Contacts";
-    let params = {};
-    params.page = 0;
-    params.per_page = 100;
-    input.params = params;
+    input.id = id;
+    //input.id = "3890818000013679004";
+
     ZCRMRestClient.API.MODULES.get(input).then(function(response) {
       let data = JSON.parse(response.body).data;
       //console.log(data);

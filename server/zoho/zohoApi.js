@@ -1,14 +1,26 @@
 const baseUrl = "/getRecord/";
+//process.env.REACT_APP_API_URL
 
 export function getRecord() {
   console.log("baseUrl: " + baseUrl);
-  console.log(
-    "process.env.REACT_APP_API_URL: " + process.env.REACT_APP_API_URL
-  );
   return fetch(baseUrl).then(function(response) {
     if (response.ok) return response.json();
   });
   //return "Hello";
+}
+
+export function getRecordByID(id) {
+  console.log(id);
+  let url = baseUrl + id;
+  console.log("url :");
+  console.log(url);
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error("Network not ok.");
+    return response.json().then(records => {
+      if (records.length !== 1) throw new Error("Record not found!");
+      return records; //should only find one record per id
+    });
+  });
 }
 
 export function saveRecord(record) {
