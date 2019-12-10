@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "../components/common/nav";
+import Nav from "../components/common/Nav";
 import H1BEmployer from "../components/H1BEmployer";
+import Layout from "../components/common/Layout";
 
 // class writing method to get initial props
 // export default class extends Component {
@@ -27,13 +28,13 @@ import H1BEmployer from "../components/H1BEmployer";
 // function method to get initialProps
 const Questionnaire = props => {
   return (
-    <div>
-      <Head>
+    <Layout>
+      {/* <Head>
         <title>Home</title>
       </Head>
-      <Nav />
+      <Nav /> */}
       <H1BEmployer id={props.postId} />
-    </div>
+    </Layout>
   );
 };
 
@@ -42,3 +43,5 @@ Questionnaire.getInitialProps = async ({ query: { id } }) => {
 };
 
 export default Questionnaire;
+
+//questionnaire/3890818000013679004

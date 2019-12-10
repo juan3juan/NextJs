@@ -104,11 +104,17 @@ app.prepare().then(() => {
     return app.render(req, res, "/questionnaire", { id: req.params.id });
   });
 
-  server.get("/:id", (req, res) => {
+  server.get("/login/:id", (req, res) => {
     console.log("post-req.query :");
     console.log(req.params);
-    return app.render(req, res, "/", { id: req.params.id });
+    return app.render(req, res, "/login", { id: req.params.id });
   });
+
+  // server.get("/:id", (req, res) => {
+  //   console.log("post-req.query :");
+  //   console.log(req.params);
+  //   return app.render(req, res, "/", { id: req.params.id });
+  // });
 
   server.get("/api/show", (req, res) => {
     return res.send("we made it!");
@@ -187,8 +193,55 @@ app.prepare().then(() => {
     });
   }
 
+  server.get("/searchRecord/:criteria", function(req, res) {
+    try {
+      ZCRMRestClient.initialize().then(function() {
+        mysql_util.getOAuthTokens().then(function(result) {
+          if (result == null || result.length === 0) {
+            //This token needs to be updated for initialization
+            let token =
+              "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
+            initialzie.getTokenOnetime(token);
+          } else {
+            searchRecordByCriteria(req.params.criteria, res);
+          }
+        });
+      });
+    } catch {
+      throw new Error("exception!\n" + e);
+    }
+  });
+
+  function searchRecordByCriteria(criteria, res) {
+    let params = {};
+    //params.Client_Number = "NC803617";
+    //params.phone = "123456";
+    //params.email = "test@nyis.com";
+    params.fax = "123";
+    //params.Last_Name = "test-20190825";
+    //params.id = "3890818000007600020";
+
+    let input = {};
+    input.module = "Contacts";
+    input.params = params;
+    console.log("input");
+    console.log(input);
+
+    //input.id = "3890818000013679004";
+
+    ZCRMRestClient.API.MODULES.search(input).then(function(response) {
+      let data = JSON.parse(response.body).data;
+      console.log(response.body);
+      // let result = wrap.wrapresult(input.module, data);
+      // res.set("Content-Type", "text/html");
+      // res.send(result);
+      res.send(data);
+    });
+  }
+
   server.all("*", (req, res) => {
     return handle(req, res);
+    //return app.render(req, res, "/_errors", req.query);
   });
   server.listen(port, err => {
     if (err) throw err;

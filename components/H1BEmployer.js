@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import EmployerForm from "./EmployerForm";
 //import { getRecord, saveRecord } from "../server/zoho/zohoApi";
 import * as zohoApi from "../server/zoho/zohoApi";
+import PropTypes from "prop-types";
 
 function H1BEmployer(props) {
   const [companyUnits, setCompanyUnits] = useState([
@@ -40,6 +41,7 @@ function H1BEmployer(props) {
   //     setFormContent(...formContent, { firstName: response.Email });
   //   });
   // });
+  //here for the first time init value, like componentDidMount
   useEffect(() => {
     zohoApi.getRecordByID(props.id).then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
@@ -62,6 +64,7 @@ function H1BEmployer(props) {
     event.preventDefault();
     zohoApi.saveRecord(formContent).then(() => {});
   }
+
   return (
     <EmployerForm
       companyUnits={companyUnits}
@@ -74,5 +77,7 @@ function H1BEmployer(props) {
     />
   );
 }
-
+H1BEmployer.propTypes = {
+  Full_Name: PropTypes.number.isRequired
+};
 export default H1BEmployer;

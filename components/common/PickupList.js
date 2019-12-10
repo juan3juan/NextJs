@@ -6,10 +6,10 @@ function PickupList(props) {
       <label>{props.label}</label>
       <div className="field">
         <select id="author" name="authorId" className="form-control">
-          {props.options.map(unit => {
+          {props.options.map((unit, index) => {
             return (
               <>
-                <option key={unit.id}>{unit.value}</option>
+                <option key={index}>{unit.value}</option>
               </>
             );
           })}
