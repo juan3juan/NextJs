@@ -104,10 +104,10 @@ app.prepare().then(() => {
     return app.render(req, res, "/questionnaire", { id: req.params.id });
   });
 
-  server.get("/login/:id", (req, res) => {
+  server.get("/login/:criteria", (req, res) => {
     console.log("post-req.query :");
     console.log(req.params);
-    return app.render(req, res, "/login", { id: req.params.id });
+    return app.render(req, res, "/login", { criteria: req.params.criteria });
   });
 
   // server.get("/:id", (req, res) => {
@@ -213,21 +213,20 @@ app.prepare().then(() => {
   });
 
   function searchRecordByCriteria(criteria, res) {
+    let criteriaCombine = "(Client_Number:equals:" + criteria + ")";
+    //"((Phone:equals:123456)and(Last_Name:equals:test-20190825))";
+
+    //criteria.Last_Name = "test-20190825";
     let params = {};
+    params.criteria = criteriaCombine;
     //params.Client_Number = "NC803617";
-    //params.phone = "123456";
-    //params.email = "test@nyis.com";
-    params.fax = "123";
-    //params.Last_Name = "test-20190825";
-    //params.id = "3890818000007600020";
 
     let input = {};
     input.module = "Contacts";
     input.params = params;
     console.log("input");
     console.log(input);
-
-    //input.id = "3890818000013679004";
+    console.log(criteria);
 
     ZCRMRestClient.API.MODULES.search(input).then(function(response) {
       let data = JSON.parse(response.body).data;

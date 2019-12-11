@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Router from "next/router";
 import * as zohoApi from "../server/zoho/zohoApi";
+import * as Base64 from "../src/Base64";
 
 function Login(props) {
   const [userData, setUserData] = useState({ pin: "" });
@@ -9,16 +10,26 @@ function Login(props) {
     event.preventDefault();
     console.log("userData.pin");
     console.log(userData);
-    zohoApi.getRecordByID(props.id).then(records => {
-      console.log("records");
-      console.log(records);
+    zohoApi.searchRecordByCriteria(props.criteria).then(records => {
       if (records[0].PIN === userData.pin) {
-        const url = "/questionnaire/" + props.id;
+        //let encryptID = Base64.encode(records[0].id);
+        const url = "/questionnaire/" + records[0].id;
+        console.log(url);
         Router.push(url);
       } else {
         alert("The pin is not correct!");
       }
     });
+    // zohoApi.getRecordByID(props.id).then(records => {
+    //   console.log("records");
+    //   console.log(records);
+    //   if (records[0].PIN === userData.pin) {
+    //     const url = "/questionnaire/" + props.id;
+    //     Router.push(url);
+    //   } else {
+    //     alert("The pin is not correct!");
+    //   }
+    // });
   }
 
   function handleChange({ target }) {
@@ -80,8 +91,8 @@ function Login(props) {
   );
 }
 
-Login.getInitialProps = async ({ query: { id } }) => {
-  return { id: id };
+Login.getInitialProps = async ({ query: { criteria } }) => {
+  return { criteria: criteria };
 };
 
 export default Login;

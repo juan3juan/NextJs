@@ -35,6 +35,17 @@ export function saveRecord(record) {
   });
 }
 
+export function searchRecordByCriteria(criteria) {
+  let url = "/searchRecord/" + criteria;
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error("Network not ok.");
+    return response.json().then(records => {
+      if (records.length !== 1) throw new Error("Record not found!");
+      return records;
+    });
+  });
+}
+
 // export function saveRecord(record) {
 //   return fetch("/saveRecord", {
 //     method: "POST",
