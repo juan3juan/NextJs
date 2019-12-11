@@ -43,9 +43,9 @@ Questionnaire.getInitialProps = async ({ query: { id } }) => {
   console.log("ques: ");
   console.log(id);
 
-  // let decodeID = Base64.decode(id);
-  // console.log(decodeID);
-  return { postId: id };
+  let decodeID = Base64.decode(id);
+  console.log(decodeID);
+  return { postId: decodeID };
 };
 
 export default Questionnaire;

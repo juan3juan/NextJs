@@ -12,8 +12,8 @@ function Login(props) {
     console.log(userData);
     zohoApi.searchRecordByCriteria(props.criteria).then(records => {
       if (records[0].PIN === userData.pin) {
-        //let encryptID = Base64.encode(records[0].id);
-        const url = "/questionnaire/" + records[0].id;
+        let encryptID = Base64.encode(records[0].id);
+        const url = "/questionnaire/" + encryptID;
         console.log(url);
         Router.push(url);
       } else {
