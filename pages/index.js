@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
-import H1BEmployer from "../components/H1BEmployer";
-import Layout from "../components/common/Layout";
+import H1BEmployer from "../src/components/H1BEmployer";
+import Layout from "../src/components/common/Layout";
 
 // function method to get initialProps
 // const Home = props => {

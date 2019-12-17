@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "../components/common/Nav";
+import Head from "../src/components/common/Nav";
 
 const Index2 = props => {
   return (
