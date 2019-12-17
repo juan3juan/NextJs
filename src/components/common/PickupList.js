@@ -5,11 +5,17 @@ function PickupList(props) {
     <div className="form-group form-content">
       <label>{props.label}</label>
       <div className="field">
-        <select id="author" name="authorId" className="form-control">
+        <select
+          id={props.id}
+          name={props.name}
+          value={props.value}
+          onChange={props.onChange}
+          className="form-control"
+        >
           {props.options.map((unit, index) => {
             return (
               <>
-                <option key={index}>{unit.value}</option>
+                <option key={unit.id}>{unit.value}</option>
               </>
             );
           })}

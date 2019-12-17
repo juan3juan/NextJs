@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Router from "next/router";
 import * as zohoApi from "../server/zoho/zohoApi";
 import * as Base64 from "../src/Base64";
+import Head from "next/head";
+import Nav from "../src/components/common/Nav";
 
 function Login(props) {
   const [userData, setUserData] = useState({ pin: "" });
@@ -11,6 +13,8 @@ function Login(props) {
     console.log("userData.pin");
     console.log(userData);
     zohoApi.searchRecordByCriteria(props.criteria).then(records => {
+      console.log("records");
+      console.log(records);
       if (records[0].PIN === userData.pin) {
         let encryptID = Base64.encode(records[0].id);
         const url = "/questionnaire/" + encryptID;
@@ -40,6 +44,10 @@ function Login(props) {
   }
   return (
     <div>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <Nav />
       <div className="login">
         <form onSubmit={handleSubmit}>
           <label htmlFor="pin">Please input the pin from Email</label>
