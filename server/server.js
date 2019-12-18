@@ -15,6 +15,8 @@ const wrap = require("./zoho/wrapresult");
 //for upload file
 const multer = require("multer");
 const cors = require("cors");
+// for upload attachment
+let fs = require("fs");
 
 app.prepare().then(() => {
   const server = express();
@@ -42,6 +44,56 @@ app.prepare().then(() => {
       return res.status(200).send(req.file);
     });
   });
+
+  // for upload attachment
+  // upload attachment
+  server.get("/uploadAttachment", (req, res) => {
+    try {
+      ZCRMRestClient.initialize().then(function() {
+        mysql_util.getOAuthTokens().then(function(result) {
+          if (result == null || result.length === 0) {
+            //This token needs to be updated for initialization
+            let token =
+              "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
+            initialzie.getTokenOnetime(token);
+          } else {
+            uploadAttachment(res);
+          }
+        });
+      });
+    } catch {
+      throw new Error("exception!\n" + e);
+    }
+  });
+
+  function uploadAttachment(res) {
+    let input = {};
+    input.module = "Cases_Info";
+    input.id = "3890818000011802561";
+    let dirname = "src/fileUpload/";
+    fs.readdir(dirname, function(err, filenames) {
+      if (err) {
+        throw new Error("read directory Error: " + err);
+      }
+      filenames.forEach(function(filename) {
+        let filepath = dirname + filename;
+        fs.readFile(filepath, "utf-8", function(err, content) {
+          if (err) {
+            throw new Error("uploadFile Error: " + err);
+          }
+          let readStream = fs.createReadStream(filepath);
+          input.x_file_content = readStream;
+
+          const uploadFile = ZCRMRestClient.API.ATTACHMENTS.uploadFile(input);
+          console.log(uploadFile);
+          //delete the update file
+          fs.unlink(filepath, err => {
+            if (err) throw err;
+          });
+        });
+      });
+    });
+  }
 
   server.post("/saveRecord", function(req, res) {
     let record = req.body.record;
@@ -100,6 +152,7 @@ app.prepare().then(() => {
     //"3890818000013536002";
     ZCRMRestClient.API.MODULES.put(input).then(function(response) {
       let data = JSON.parse(response.body).data;
+      console.log("data from update: ");
       console.log(data);
       res.send(data);
     });

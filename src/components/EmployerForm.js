@@ -6,7 +6,7 @@ function EmployerForm(props) {
   return (
     <>
       <h1 className="title"> H-1B EMPLOYER QUESTIONNAIRE</h1>
-      <form className="form" onSubmit={props.onSubmit}>
+      <form className="form">
         <div className="left">
           <div className="section1">
             <label className="head form-control">
@@ -312,6 +312,7 @@ function EmployerForm(props) {
             type="submit"
             value="Submit"
             className="btn btn-secondary"
+            onClick={props.onSubmit}
           />
         </div>
       </form>

@@ -5,6 +5,7 @@ import * as zohoApi from "../../server/zoho/zohoApi";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
+import { withRouter } from "react-router-dom";
 
 function H1BEmployer(props) {
   // for upload files
@@ -195,7 +196,12 @@ function H1BEmployer(props) {
   function handleSubmit(event) {
     event.preventDefault();
     zohoApi.saveRecord(formContent).then(response => {
-      if (response.ok) Router.push("/success");
+      console.log("response");
+      console.log(response);
+      if (response.ok)
+        //props.history.push("/success");
+        Router.push("/success");
+      //<Redirect to="/success" />;
       else alert("fail");
     });
   }
@@ -218,6 +224,7 @@ function H1BEmployer(props) {
   };
 
   function onClickUpload(event) {
+    event.preventDefault();
     const data = new FormData();
     for (let x = 0; x < selectedFile.length; x++) {
       data.append("file", selectedFile[x]);
@@ -225,6 +232,7 @@ function H1BEmployer(props) {
     axios.post("http://localhost:3010/upload", data, {}).then(res => {
       console.log(res.statusText);
     });
+    alert("upload success!");
   }
 
   return (
