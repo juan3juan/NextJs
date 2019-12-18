@@ -195,13 +195,11 @@ function H1BEmployer(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    zohoApi.saveRecord(formContent).then(response => {
-      console.log("response");
-      console.log(response);
-      if (response.ok)
-        //props.history.push("/success");
-        Router.push("/success");
-      //<Redirect to="/success" />;
+    zohoApi.saveRecord(formContent).then(responseRecord => {
+      console.log("responseRecord");
+      console.log(responseRecord);
+      zohoApi.uploadAttachment(formContent);
+      if (responseRecord.ok) Router.push("/success");
       else alert("fail");
     });
   }

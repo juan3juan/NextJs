@@ -2,7 +2,7 @@ const express = require("express");
 const next = require("next");
 
 //const port = parseInt(process.env.PORT, 10) || 3010;
-const port = 3010;
+const port = 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -47,7 +47,7 @@ app.prepare().then(() => {
 
   // for upload attachment
   // upload attachment
-  server.get("/uploadAttachment", (req, res) => {
+  server.post("/uploadAttachment", (req, res) => {
     try {
       ZCRMRestClient.initialize().then(function() {
         mysql_util.getOAuthTokens().then(function(result) {
@@ -57,7 +57,8 @@ app.prepare().then(() => {
               "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
             initialzie.getTokenOnetime(token);
           } else {
-            uploadAttachment(res);
+            let record = req.body.record;
+            uploadAttachment(record, res);
           }
         });
       });
@@ -66,10 +67,11 @@ app.prepare().then(() => {
     }
   });
 
-  function uploadAttachment(res) {
+  function uploadAttachment(record, res) {
     let input = {};
     input.module = "Cases_Info";
-    input.id = "3890818000011802561";
+    //input.id = "3890818000011802561";
+    input.id = record.id;
     let dirname = "src/fileUpload/";
     fs.readdir(dirname, function(err, filenames) {
       if (err) {
