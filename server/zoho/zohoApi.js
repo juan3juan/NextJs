@@ -17,8 +17,8 @@ export function getRecordByID(id) {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error("Network not ok.");
     return response.json().then(records => {
-      if (records.length !== 1) throw new Error("Record not found!");
-      return records; //should only find one record per id
+      if (records.length < 1) throw new Error("Record not found!");
+      return records; //should only find one record per id, if not only one, use the first one of the array
     });
   });
 }
@@ -50,9 +50,11 @@ export function uploadAttachment(record) {
 export function searchRecordByCriteria(criteria) {
   let url = "/searchRecord/" + criteria;
   return fetch(url).then(response => {
+    console.log("zohoapi resp: ");
+    console.log(response);
     if (!response.ok) throw new Error("Network not ok.");
     return response.json().then(records => {
-      if (records.length !== 1) throw new Error("Record not found!");
+      if (records.length < 1) throw new Error("Record not found!");
       return records;
     });
   });

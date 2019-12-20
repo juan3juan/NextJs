@@ -2,7 +2,7 @@ const express = require("express");
 const next = require("next");
 
 //const port = parseInt(process.env.PORT, 10) || 3010;
-const port = 3000;
+const port = 3010;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -350,7 +350,9 @@ app.prepare().then(() => {
       criteria +
       ")and(IsPetitionerOrEmployer:equals:Beneficiary)";
     //"((Phone:equals:123456)and(Last_Name:equals:test-20190825))";
+    console.log("criteriaCombine");
 
+    console.log(criteriaCombine);
     //criteria.Last_Name = "test-20190825";
     let params = {};
     params.criteria = criteriaCombine;
