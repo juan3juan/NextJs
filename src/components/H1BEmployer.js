@@ -6,17 +6,20 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
+import VCode from "../../pages/captcha";
 
 function H1BEmployer(props) {
   // for upload files
   const [selectedFile, setSelectedFile] = useState();
 
   const [companyUnits, setCompanyUnits] = useState([
+    { id: "0", value: "" },
     { id: "1", value: "Apt" },
     { id: "2", value: "Ste" },
     { id: "3", value: "Flr" }
   ]);
   const [states, setStates] = useState([
+    { id: "0", value: "" },
     { id: "1", value: "AA" },
     { id: "2", value: "AE" },
     { id: "3", value: "AK" },
@@ -81,6 +84,7 @@ function H1BEmployer(props) {
     { id: "62", value: "WY" }
   ]);
   const [wage, setWage] = useState([
+    { id: "0", value: "" },
     { id: "1", value: "None" },
     { id: "2", value: "Hour" },
     { id: "3", value: "Week" },
@@ -88,6 +92,7 @@ function H1BEmployer(props) {
     { id: "5", value: "Year" }
   ]);
   const [yesOrNo, setYesOrNo] = useState([
+    { id: "0", value: "" },
     { id: "1", value: "Yes" },
     { id: "2", value: "No" }
   ]);
@@ -234,17 +239,28 @@ function H1BEmployer(props) {
   }
 
   return (
-    <EmployerForm
-      companyUnits={companyUnits}
-      states={states}
-      wage={wage}
-      yesOrNo={yesOrNo}
-      formContent={formContent}
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-      onChangeUpload={onChangeUpload}
-      onClickUpload={onClickUpload}
-    />
+    <>
+      <EmployerForm
+        companyUnits={companyUnits}
+        states={states}
+        wage={wage}
+        yesOrNo={yesOrNo}
+        formContent={formContent}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onChangeUpload={onChangeUpload}
+        onClickUpload={onClickUpload}
+        VCode={VCode}
+      />
+      {/* <VCode />
+      <input
+        id="submit"
+        type="submit"
+        value="Submit"
+        className="btn btn-secondary"
+        onClick={handleSubmit}
+      /> */}
+    </>
   );
 }
 H1BEmployer.propTypes = {
