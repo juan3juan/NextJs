@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
-import VCode from "../../pages/captcha";
+import VCode from "./common/captcha";
 
 function H1BEmployer(props) {
   // for upload files
