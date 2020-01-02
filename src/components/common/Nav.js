@@ -13,27 +13,27 @@ const Nav = () => (
   <nav>
     <ul className="primary-nav">
       <li className="left">
-        <Link href="/">
+        <Link href="https://nyislaw.com/">
           <a>NYIS Law</a>
         </Link>
       </li>
       <li className="right">
-        <Link href="/">
+        <Link href="https://nyislaw.com/ourfirm/">
           <a>Our Firm</a>
         </Link>
       </li>
       <li className="right">
-        <Link href="/">
+        <Link href="https://nyislaw.com/practice/">
           <a>Practice</a>
         </Link>
       </li>
       <li className="right">
-        <Link href="/">
+        <Link href="https://ask.nyislaw.com/">
           <a>Ask</a>
         </Link>
       </li>
       <li className="right">
-        <Link href="/">
+        <Link href="https://nyislaw.com/contactus/">
           <a>Contact us</a>
         </Link>
       </li>
