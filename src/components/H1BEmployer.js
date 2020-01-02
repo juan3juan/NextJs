@@ -188,8 +188,10 @@ function H1BEmployer(props) {
         Off_site_Assignment: records[0].Off_site_Assignment
       });
     });
-    //setFormContent({ ...formContent, Full_Name: "tes" });
-  }, []);
+    // //vcode
+    // initVcode();
+    // canvas();
+  });
 
   function handleChange({ target }) {
     setFormContent({
@@ -200,6 +202,8 @@ function H1BEmployer(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    // if (vcode.vcodeInput.toUpperCase() !== vcode.vcodeProduce.toUpperCase())
+    //   alert("vcode is not correct!");
     zohoApi.saveRecord(formContent).then(responseRecord => {
       console.log("responseRecord");
       console.log(responseRecord);
@@ -208,7 +212,7 @@ function H1BEmployer(props) {
       else alert("fail");
     });
   }
-
+  // upload file
   function onChangeUpload(event) {
     if (maxSelectFile(event)) {
       setSelectedFile(event.target.files);

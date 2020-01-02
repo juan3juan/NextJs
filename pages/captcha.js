@@ -18,6 +18,7 @@ const VCode = props => {
 
   useEffect(() => {
     initVcode();
+    canvas();
   }, [vcode.data]);
 
   const initVcode = () => {
