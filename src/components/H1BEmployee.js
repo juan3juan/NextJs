@@ -140,6 +140,7 @@ function H1BEmployee(props) {
     Any_J_Visa_Before: "",
     Dates_maintained_J_Status: "",
     Gender: "",
+    Any_H_Petition_in_Last_7yrs: "",
     Any_Denied_H_Petition_in_last_7yrs: "",
     Current_U_S_Address: "",
     Current_Unit: "",
@@ -147,8 +148,8 @@ function H1BEmployee(props) {
     Current_City: "",
     Current_State: "",
     Current_Zip_Code: "",
-    Job_Title: "",
-    Rate_of_Pay_Per_Year: "",
+    Office_City: "",
+    State_or_Country: "",
     Foreign_Address: "",
     Foreign_Unit: "",
     Foreign_Unit_Number: "",
@@ -211,6 +212,7 @@ function H1BEmployee(props) {
         Any_J_Visa_Before: records[0].Any_J_Visa_Before,
         Dates_maintained_J_Status: records[0].Dates_maintained_J_Status,
         Gender: records[0].Gender,
+        Any_H_Petition_in_Last_7yrs: records[0].Any_H_Petition_in_Last_7yrs,
         Any_Denied_H_Petition_in_last_7yrs:
           records[0].Any_Denied_H_Petition_in_last_7yrs,
         Current_U_S_Address: records[0].Current_U_S_Address,
@@ -219,8 +221,8 @@ function H1BEmployee(props) {
         Current_City: records[0].Current_City,
         Current_State: records[0].Current_State,
         Current_Zip_Code: records[0].Current_Zip_Code,
-        Job_Title: records[0].Job_Title,
-        Rate_of_Pay_Per_Year: records[0].Rate_of_Pay_Per_Year,
+        Office_City: records[0].Office_City,
+        State_or_Country: records[0].State_or_Country,
         Foreign_Address: records[0].Foreign_Address,
         Foreign_Unit: records[0].Foreign_Unit,
         Foreign_Unit_Number: records[0].Foreign_Unit_Number,
@@ -320,7 +322,7 @@ function H1BEmployee(props) {
     </>
   );
 }
-H1BEmployee.propTypes = {
-  Full_Name: PropTypes.number.isRequired
-};
+// H1BEmployee.propTypes = {
+//   Full_Name: PropTypes.number.isRequired
+// };
 export default H1BEmployee;

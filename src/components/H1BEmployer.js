@@ -191,7 +191,7 @@ function H1BEmployer(props) {
     // //vcode
     // initVcode();
     // canvas();
-  });
+  }, []);
 
   function handleChange({ target }) {
     setFormContent({
@@ -256,18 +256,10 @@ function H1BEmployer(props) {
         onClickUpload={onClickUpload}
         VCode={VCode}
       />
-      {/* <VCode />
-      <input
-        id="submit"
-        type="submit"
-        value="Submit"
-        className="btn btn-secondary"
-        onClick={handleSubmit}
-      /> */}
     </>
   );
 }
-H1BEmployer.propTypes = {
-  Full_Name: PropTypes.number.isRequired
-};
+// H1BEmployer.propTypes = {
+//   Full_Name: PropTypes.number.isRequired
+// };
 export default H1BEmployer;
