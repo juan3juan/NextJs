@@ -6,119 +6,55 @@ import Link from "next/link";
 import TextInput from "../src/components/common/TextInput";
 import PickupList from "../src/components/common/TextInput";
 
-const b = props => {
+const b = () => {
   return (
-    // <div className="container-fluid">
-    //   <h1>Hello World!</h1>
-    //   <div className="row">
-    //     <div
-    //       className="col-xs-6 col-sm-3"
-    //       style={{ backgroundColor: "lavender" }}
-    //     >
-    //       <h2>Column 1</h2>
-    //       <div>h1</div>
-    //       <div>h1</div>
-    //     </div>
-    //     <div
-    //       className="col-xs-6 col-sm-3"
-    //       style={{ backgroundColor: "lavenderblush" }}
-    //     >
-    //       Column 2
-    //     </div>
-    //     <div className="clearfix visible-xs"></div>
-    //     <div
-    //       className="col-xs-6 col-sm-3"
-    //       style={{ backgroundColor: "lightcyan" }}
-    //     >
-    //       Column 3
-    //     </div>
-    //     <div
-    //       className="col-xs-6 col-sm-3"
-    //       style={{ backgroundColor: "lightgray" }}
-    //     >
-    //       Column 4
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div className="container-fluid">
-      <h1 className="title"> H-1B EMPLOYER QUESTIONNAIRE</h1>
-      <form className="form">
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-            <div className="section1">
-              <label className="head form-control">
-                Company Signatory Basic Information
-              </label>
-            </div>
-
-            <div className="section1">
-              <label className="head form-control">Company Information</label>
-            </div>
-            <div className="section1">
-              <label className="head form-control">Company Information</label>
-            </div>
-            <div className="section1">
-              <label className="head form-control">Company Information</label>
-            </div>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-            <div className="section1">
-              <label className="head form-control">
-                Employment Information
-              </label>
-            </div>
-            <div className="section1">
-              <label className="head form-control">
-                Employment Information
-              </label>
-            </div>
-          </div>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          Navbar
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Features
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Pricing
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">
+                Disabled
+              </a>
+            </li>
+          </ul>
         </div>
-      </form>
-      <style jsx>{`
-        .title {
-          text-align: center;
-          font-family: "Gill Sans", sans-serif;
-        }
-        // .form {
-        // display: flex;
-        // flex-wrap: wrap;
-        // }
+      </nav>
 
-        // .left{
-        // flex:40%;
-        // background-color: #e3deda,
-        // padding:50px;
-        // padding-left:200px;
-        // margin: 50px;
-        // }
-        // .right{
-        // flex:40%;
-        // background-color: #e3deda,
-        // padding:50px;
-        // padding-right: 200px;
-        // margin: 50px;
-        // }
-        .head {
-          background: #5b5630;
-          color: white;
-          font-size: 28px;
-        }
-        // .section1{
-        // background: #f9fafb;
-        // margin-bottom: 50px;
-        // }
-        .form-content {
-          padding-left: 30px;
-          padding-right: 30px;
-          padding-bottom: 5px;
-        }
-        #submit {
-          display: block;
-          margin: 0 auto;
-        }
-      `}</style>
+      <header class="masthead">
+        <div class="container">
+          <div class="intro-text"></div>
+        </div>
+      </header>
     </div>
   );
 };
