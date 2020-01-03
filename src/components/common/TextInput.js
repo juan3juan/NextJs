@@ -2,7 +2,7 @@ import React from "react";
 
 function TextInput(props) {
   return (
-    <div className="form-group form-content">
+    <div className="form-group">
       <label>{props.label}</label>
       <div className="field">
         <input
@@ -17,11 +17,11 @@ function TextInput(props) {
       </div>
 
       <style jsx>{`
-        .form-content {
-          padding-left: 30px;
-          padding-right: 30px;
-          padding-bottom: 5px;
-        }
+        // .form-content {
+        //   padding-left: 30px;
+        //   padding-right: 30px;
+        //   padding-bottom: 5px;
+        // }
       `}</style>
     </div>
   );

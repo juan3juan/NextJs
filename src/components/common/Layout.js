@@ -23,9 +23,7 @@ const Layout = props => {
           padding-right: 1rem;
         }
       `}</style>
-      <main>
-        <div className="container">{props.children}</div>
-      </main>
+      <main>{props.children}</main>
     </div>
   );
 };

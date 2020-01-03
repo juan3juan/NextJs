@@ -22,11 +22,11 @@ function PickupList(props) {
         </select>
       </div>
       <style jsx>{`
-        .form-content {
-          padding-left: 30px;
-          padding-right: 30px;
-          padding-bottom: 5px;
-        }
+        // .form-content {
+        //   padding-left: 30px;
+        //   padding-right: 30px;
+        //   padding-bottom: 5px;
+        // }
       `}</style>
     </div>
   );
