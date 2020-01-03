@@ -198,11 +198,11 @@ function EmployeeForm(props) {
               onChange={props.onChange}
             />
             <PickupList
-              label="Gender"
-              options={props.Gender}
-              id="Gender"
-              name="Gender"
-              value={props.formContent.Gender}
+              label="Any H Petition in Last 7yrs"
+              options={props.yesOrNo}
+              id="Any_H_Petition_in_Last_7yrs"
+              name="Any_H_Petition_in_Last_7yrs"
+              value={props.formContent.Any_H_Petition_in_Last_7yrs}
               onChange={props.onChange}
             />
             <PickupList
@@ -278,18 +278,18 @@ function EmployeeForm(props) {
             <TextInput
               label="Consulate Office City ⚠️"
               type="text"
-              id="Job_Title"
-              name="Job_Title"
-              value={props.formContent.Job_Title}
+              id="Office_City"
+              name="Office_City"
+              value={props.formContent.Office_City}
               onChange={props.onChange}
             />
 
             <TextInput
               label="Consulate Office State or Country"
               type="text"
-              id="Rate_of_Pay_Per_Year"
-              name="Rate_of_Pay_Per_Year"
-              value={props.formContent.Rate_of_Pay_Per_Year}
+              id="State_or_Country"
+              name="State_or_Country"
+              value={props.formContent.State_or_Country}
               onChange={props.onChange}
             />
             <TextInput
@@ -465,8 +465,8 @@ function EmployeeForm(props) {
               </div>
             </div>
           </div>
-          <props.VCode />
-          <br />
+          {/* <props.VCode />
+          <br /> */}
           <input
             id="submit"
             type="submit"

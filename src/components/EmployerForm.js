@@ -307,8 +307,8 @@ function EmployerForm(props) {
               </div>
             </div>
           </div>
-          <props.VCode />
-          <br />
+          {/* <props.VCode />
+          <br /> */}
           <input
             id="submit"
             type="submit"
