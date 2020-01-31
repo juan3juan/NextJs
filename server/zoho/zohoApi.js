@@ -9,9 +9,9 @@ export function getRecord() {
   //return "Hello";
 }
 
-export function getRecordByID(id) {
+export function getRecordByID(id, module) {
   console.log(id);
-  let url = baseUrl + id;
+  let url = baseUrl + id + "/" + module;
   console.log("url :");
   console.log(url);
   return fetch(url).then(response => {

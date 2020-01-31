@@ -240,6 +240,11 @@ app.prepare().then(() => {
     console.log(req.params);
     return app.render(req, res, "/questionnaire1", { id: req.params.id });
   });
+  server.get("/questionnaire765/:id", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/questionnaire765", { id: req.params.id });
+  });
 
   server.get("/login/:criteria", (req, res) => {
     console.log("post-req.query :");
@@ -251,6 +256,12 @@ app.prepare().then(() => {
     console.log("post-req.query :");
     console.log(req.params);
     return app.render(req, res, "/login1", { criteria: req.params.criteria });
+  });
+
+  server.get("/login765/:criteria", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/login765", { criteria: req.params.criteria });
   });
 
   // server.get("/:id", (req, res) => {
@@ -301,7 +312,7 @@ app.prepare().then(() => {
     });
   }
 
-  server.get("/getRecord/:id", function(req, res) {
+  server.get("/getRecord/:id/:module", function(req, res) {
     try {
       ZCRMRestClient.initialize().then(function() {
         mysql_util.getOAuthTokens().then(function(result) {
@@ -311,7 +322,14 @@ app.prepare().then(() => {
               "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
             initialzie.getTokenOnetime(token);
           } else {
-            getRecordByID(req.params.id, res);
+            let params = {
+              id: req.params.id,
+              module: req.params.module
+            };
+            console.log("req.params : ");
+            console.log(req.params.module);
+
+            getRecordByID(params, res);
           }
         });
       });
@@ -320,10 +338,10 @@ app.prepare().then(() => {
     }
   });
 
-  function getRecordByID(id, res) {
+  function getRecordByID(params, res) {
     let input = {};
-    input.module = "Cases_Info";
-    input.id = id;
+    input.module = params.module;
+    input.id = params.id;
     //input.id = "3890818000013679004";
 
     ZCRMRestClient.API.MODULES.get(input).then(function(response) {

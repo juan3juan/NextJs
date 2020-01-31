@@ -5,7 +5,7 @@ import * as Base64 from "../src/Base64";
 import Head from "next/head";
 import Nav from "../src/components/common/Nav";
 
-function Login(props) {
+function Login765(props) {
   const [userData, setUserData] = useState({ pin: "" });
   const [vcode, setVcode] = useState({
     data: getRandom(109, 48, 4),
@@ -98,7 +98,7 @@ function Login(props) {
         console.log(records.length);
         if (records[0].PIN === userData.pin) {
           let encryptID = Base64.encode(records[0].id);
-          const url = "/questionnaire/" + encryptID;
+          const url = "/questionnaire765/" + encryptID;
           console.log(url);
           Router.push(url);
         } else {
@@ -249,10 +249,10 @@ function Login(props) {
   );
 }
 
-Login.getInitialProps = async ({ query: { criteria } }) => {
+Login765.getInitialProps = async ({ query: { criteria } }) => {
   return { criteria: criteria };
 };
 
-export default Login;
+export default Login765;
 
 //3890818000007600020

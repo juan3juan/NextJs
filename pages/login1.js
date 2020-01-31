@@ -87,7 +87,7 @@ function Login1(props) {
 
     setVcode({
       ...vcode,
-      vcodeInput: target.value
+      [target.name]: target.value
     });
   }
   function handleSubmit() {
