@@ -98,18 +98,21 @@ app.prepare().then(() => {
   }
 
   server.post("/saveRecord", function(req, res) {
-    let record = req.body.record;
-    //let data = JSON.parse(req);
-    console.log(req.method);
+    let params = {
+      record: req.body.record,
+      module: req.body.module
+    };
+
     //saveRecordToZoho(record, res);
-    updateRecordToZoho(record, res);
+    updateRecordToZoho(params, res);
     //res.send("POST request to the homePage");
     // res.send(id);
   });
 
-  function saveRecordToZoho(recordInput, res) {
+  function saveRecordToZoho(params, res) {
     let input = {};
-    input.module = "Cases_Info";
+    input.module = params.module;
+    let recordInput = params.record;
     console.log("recordInput :");
     console.log(recordInput);
     // let record = JSON.parse(
@@ -136,9 +139,10 @@ app.prepare().then(() => {
     });
   }
 
-  function updateRecordToZoho(recordInput, res) {
+  function updateRecordToZoho(params, res) {
     let input = {};
-    input.module = "Cases_Info";
+    input.module = params.module;
+    let recordInput = params.record;
     // let record = JSON.parse(
     //   `{ \"data\": [ { \"Name\": \"888888\", \"LCA_ETA_Case_Number\": \"888\",\"More_than_50\": \"Yes\" }] }`
     // );

@@ -5,13 +5,56 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
-import VCode from "./common/captcha";
+import { choices } from "./common/choices";
 
 function I765(props) {
-  const [relatedRecords, setRelatedRecords] = useState({
-    clientId: "",
-    companyId: ""
-  });
+  const [gender, setGender] = useState([
+    { id: "0", value: "" },
+    { id: "1", value: "Male" },
+    { id: "2", value: "Female" }
+  ]);
+  const [maritial, setMaritial] = useState([
+    { id: "0", value: "" },
+    { id: "1", value: "Single" },
+    { id: "2", value: "Married" },
+    { id: "3", value: "Divorced" },
+    { id: "4", value: "Widowed" }
+  ]);
+
+  const [statusLastEntry, setStatusLastEntry] = useState([
+    { id: "0", value: "" },
+    { id: "1", value: "B1 - TEMPORARY VISITOR FOR BUSINESS" },
+    { id: "2", value: "B2 - TEMPORARY VISITOR FOR PLEASURE" },
+    { id: "3", value: "F1 - STUDENT - ACADEMIC" },
+    { id: "4", value: "F2 - SPOUSE-CHILD OF F-1" },
+    { id: "5", value: "H1B - SPECIALITY OCCUPATION" },
+    { id: "6", value: "H1C - NURSE RELIEF" },
+    { id: "7", value: "H4 - SPS OR CHLD OF H1,H2,H3 OR H2R" },
+    { id: "8", value: "J1 - EXCHANGE VISITOR - OTHERS" },
+    { id: "9", value: "J1S - EXCHANGE VISITOR - STUDENT" },
+    { id: "10", value: "J2 - SPOUSE-CHILD OF J-1" },
+    { id: "11", value: "J2S - SPOUSE-CHILD OF J-1S" },
+    { id: "12", value: "L1 - INTRA-COMPANY TRANSFEREE" },
+    { id: "13", value: "L1A - MANAGER OR EXECUTIVE" },
+    { id: "14", value: "L1B - SPECIALIZED KNOWLEDGE ALIEN" },
+    { id: "15", value: "L2 - SPOUSE-CHILD OF L-1" },
+    { id: "16", value: "O1 - ALIEN W-EXTRAORDINARY ABILITY" },
+    { id: "17", value: "O1A - EXTRAORDINARY ALIEN - NON-ARTS" },
+    { id: "18", value: "O1B - EXTRAORDINARY ALIEN IN ARTS" },
+    { id: "19", value: "O2 - ACCOMPANYING ALIEN TO O1" },
+    { id: "20", value: "O3 - SPOUSE-CHILD OF O-1, O-2" }
+  ]);
+
+  const [eligibilityCategory, setEligibilityCategory] = useState([
+    { id: "0", value: "" },
+    { id: "1", value: "a 5" },
+    { id: "2", value: "c 3 A" },
+    { id: "3", value: "c 3 B" },
+    { id: "4", value: "c 3 C" },
+    { id: "5", value: "c 8" },
+    { id: "6", value: "c 9" },
+    { id: "7", value: "c 26" }
+  ]);
 
   const [companyUnits, setCompanyUnits] = useState([
     { id: "0", value: "" },
@@ -99,7 +142,7 @@ function I765(props) {
   ]);
   const [formContent, setFormContent] = useState({});
   const [clientContent, setClientContent] = useState({
-    clientId: "",
+    id: "",
     First_Name: "",
     Last_Name: "",
     Phone: "",
@@ -133,13 +176,13 @@ function I765(props) {
   });
 
   const [companyContent, setCompanyContent] = useState({
-    companyId: "",
+    id: "",
     Account_Number: "",
     E_Verify_ID: ""
   });
 
   const [caseInfoContent, setCaseInfoContent] = useState({
-    caseInfoId: "",
+    id: "",
     Eligibility_Category: "",
     Type_of_U_S_Degree: "",
     Has_SSA: "",
@@ -152,9 +195,10 @@ function I765(props) {
     zohoApi.getRecordByID(props.id, "Cases_Info").then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
-      console.log("records :");
-      console.log(records[0]);
-
+      // console.log("records :");
+      // console.log(records[0]);
+      console.log("choices");
+      console.log(choices.yesOrNo);
       // get record from client
       zohoApi
         .getRecordByID(records[0].Related_Client.id, "Contacts")
@@ -163,7 +207,7 @@ function I765(props) {
           console.log(clientRecords[0]);
           setClientContent({
             ...clientContent,
-            clientId: clientRecords[0].id,
+            id: clientRecords[0].id,
             First_Name: clientRecords[0].First_Name,
             Last_Name: clientRecords[0].Last_Name,
             Phone: clientRecords[0].Phone,
@@ -201,7 +245,7 @@ function I765(props) {
         .then(companyRecords => {
           setCompanyContent({
             ...companyContent,
-            companyId: companyRecords[0].id,
+            id: companyRecords[0].id,
             Account_Number: companyRecords[0].Account_Number,
             E_Verify_ID: companyRecords[0].E_Verify_ID
           });
@@ -209,7 +253,7 @@ function I765(props) {
 
       setCaseInfoContent({
         ...caseInfoContent,
-        caseInfoId: records[0].id,
+        id: records[0].id,
         Eligibility_Category: records[0].Eligibility_Category,
         Type_of_U_S_Degree: records[0].Type_of_U_S_Degree,
         Has_SSA: records[0].Has_SSA,
@@ -232,28 +276,21 @@ function I765(props) {
       ...caseInfoContent,
       [target.name]: target.value
     });
-    setFormContent({
-      ...formContent,
-      [target.name]: target.value
-    });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     // if (vcode.vcodeInput.toUpperCase() !== vcode.vcodeProduce.toUpperCase())
     //   alert("vcode is not correct!");
-    zohoApi.saveRecord(formContent).then(responseRecord => {
-      console.log("responseRecord");
-      console.log(responseRecord);
-      setFormContent({
-        ...clientContent,
-        ...clientContent,
-        ...caseInfoContent
-      });
-      zohoApi.uploadAttachment(formContent);
-      if (responseRecord.ok) Router.push("/success");
-      else alert("fail");
-    });
+    let clientResp = await zohoApi.saveRecord(clientContent, "Contacts");
+    let companyResp = await zohoApi.saveRecord(companyContent, "Accounts");
+    let caseInfoResp = await zohoApi.saveRecord(caseInfoContent, "Cases_Info");
+
+    console.log("clientResp");
+    console.log(clientResp);
+
+    if (responseRecord.ok) Router.push("/success");
+    else alert("fail");
   }
 
   return (
@@ -262,13 +299,16 @@ function I765(props) {
         companyUnits={companyUnits}
         states={states}
         wage={wage}
-        yesOrNo={yesOrNo}
-        formContent={formContent}
+        yesOrNo={choices.yesOrNo}
+        gender={gender}
+        maritial={maritial}
+        statusLastEntry={statusLastEntry}
+        eligibilityCategory={eligibilityCategory}
         clientContent={clientContent}
         companyContent={companyContent}
+        caseInfoContent={caseInfoContent}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        VCode={VCode}
       />
     </>
   );

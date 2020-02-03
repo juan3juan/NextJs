@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
-import VCode from "./common/captcha";
 
 function H1BEmployee(props) {
   // for upload files
@@ -183,7 +182,7 @@ function H1BEmployee(props) {
   // });
   //here for the first time init value, like componentDidMount
   useEffect(() => {
-    zohoApi.getRecordByID(props.id).then(function(records) {
+    zohoApi.getRecordByID(props.id, "Cases_Info").then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
       console.log("records :");
@@ -256,7 +255,7 @@ function H1BEmployee(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    zohoApi.saveRecord(formContent).then(responseRecord => {
+    zohoApi.saveRecord(formContent, "Cases_Info").then(responseRecord => {
       console.log("responseRecord");
       console.log(responseRecord);
       zohoApi.uploadAttachment(formContent);
@@ -302,7 +301,6 @@ function H1BEmployee(props) {
         onSubmit={handleSubmit}
         onChangeUpload={onChangeUpload}
         onClickUpload={onClickUpload}
-        VCode={VCode}
         Gender={gender}
         yesOrNo={yesOrNo}
         currentStatus={currentStatus}
@@ -311,14 +309,6 @@ function H1BEmployee(props) {
         typeOfPetition={typeOfPetition}
         highestEducation={highestEducation}
       />
-      {/* <VCode />
-      <input
-        id="submit"
-        type="submit"
-        value="Submit"
-        className="btn btn-secondary"
-        onClick={handleSubmit}
-      /> */}
     </>
   );
 }

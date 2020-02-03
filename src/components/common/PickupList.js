@@ -1,6 +1,8 @@
 import React from "react";
 
 function PickupList(props) {
+  console.log("OPTION!!!!!");
+  console.log(props.options);
   return (
     <div className="form-group form-content">
       <label>{props.label}</label>
@@ -12,13 +14,18 @@ function PickupList(props) {
           onChange={props.onChange}
           className="form-control"
         >
-          {props.options.map((unit, index) => {
+          {props.options.map(opt => (
+            <option>{opt}</option>
+          ))}
+
+          {/* {props.options.map((option, index) => {
+            
             return (
               <>
-                <option key={unit.id}>{unit.value}</option>
+                <option key={index}>{option.value}</option>
               </>
             );
-          })}
+          })} */}
         </select>
       </div>
       <style jsx>{`

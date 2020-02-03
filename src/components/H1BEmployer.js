@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
-import VCode from "./common/captcha";
 
 function H1BEmployer(props) {
   // for upload files
@@ -145,7 +144,7 @@ function H1BEmployer(props) {
   // });
   //here for the first time init value, like componentDidMount
   useEffect(() => {
-    zohoApi.getRecordByID(props.id).then(function(records) {
+    zohoApi.getRecordByID(props.id, "Cases_Info").then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
       console.log("records :");
@@ -204,7 +203,7 @@ function H1BEmployer(props) {
     event.preventDefault();
     // if (vcode.vcodeInput.toUpperCase() !== vcode.vcodeProduce.toUpperCase())
     //   alert("vcode is not correct!");
-    zohoApi.saveRecord(formContent).then(responseRecord => {
+    zohoApi.saveRecord(formContent, "Cases_Info").then(responseRecord => {
       console.log("responseRecord");
       console.log(responseRecord);
       zohoApi.uploadAttachment(formContent);
@@ -254,7 +253,6 @@ function H1BEmployer(props) {
         onSubmit={handleSubmit}
         onChangeUpload={onChangeUpload}
         onClickUpload={onClickUpload}
-        VCode={VCode}
       />
     </>
   );

@@ -23,12 +23,13 @@ export function getRecordByID(id, module) {
   });
 }
 
-export function saveRecord(record) {
+export function saveRecord(record, module) {
   return fetch("/saveRecord", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      record
+      record,
+      module
     })
   }).then(function(response) {
     if (response.ok) return response;
