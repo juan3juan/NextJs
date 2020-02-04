@@ -8,138 +8,6 @@ import { withRouter } from "react-router-dom";
 import { choices } from "./common/choices";
 
 function I765(props) {
-  const [gender, setGender] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Male" },
-    { id: "2", value: "Female" }
-  ]);
-  const [maritial, setMaritial] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Single" },
-    { id: "2", value: "Married" },
-    { id: "3", value: "Divorced" },
-    { id: "4", value: "Widowed" }
-  ]);
-
-  const [statusLastEntry, setStatusLastEntry] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "B1 - TEMPORARY VISITOR FOR BUSINESS" },
-    { id: "2", value: "B2 - TEMPORARY VISITOR FOR PLEASURE" },
-    { id: "3", value: "F1 - STUDENT - ACADEMIC" },
-    { id: "4", value: "F2 - SPOUSE-CHILD OF F-1" },
-    { id: "5", value: "H1B - SPECIALITY OCCUPATION" },
-    { id: "6", value: "H1C - NURSE RELIEF" },
-    { id: "7", value: "H4 - SPS OR CHLD OF H1,H2,H3 OR H2R" },
-    { id: "8", value: "J1 - EXCHANGE VISITOR - OTHERS" },
-    { id: "9", value: "J1S - EXCHANGE VISITOR - STUDENT" },
-    { id: "10", value: "J2 - SPOUSE-CHILD OF J-1" },
-    { id: "11", value: "J2S - SPOUSE-CHILD OF J-1S" },
-    { id: "12", value: "L1 - INTRA-COMPANY TRANSFEREE" },
-    { id: "13", value: "L1A - MANAGER OR EXECUTIVE" },
-    { id: "14", value: "L1B - SPECIALIZED KNOWLEDGE ALIEN" },
-    { id: "15", value: "L2 - SPOUSE-CHILD OF L-1" },
-    { id: "16", value: "O1 - ALIEN W-EXTRAORDINARY ABILITY" },
-    { id: "17", value: "O1A - EXTRAORDINARY ALIEN - NON-ARTS" },
-    { id: "18", value: "O1B - EXTRAORDINARY ALIEN IN ARTS" },
-    { id: "19", value: "O2 - ACCOMPANYING ALIEN TO O1" },
-    { id: "20", value: "O3 - SPOUSE-CHILD OF O-1, O-2" }
-  ]);
-
-  const [eligibilityCategory, setEligibilityCategory] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "a 5" },
-    { id: "2", value: "c 3 A" },
-    { id: "3", value: "c 3 B" },
-    { id: "4", value: "c 3 C" },
-    { id: "5", value: "c 8" },
-    { id: "6", value: "c 9" },
-    { id: "7", value: "c 26" }
-  ]);
-
-  const [companyUnits, setCompanyUnits] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Apt" },
-    { id: "2", value: "Ste" },
-    { id: "3", value: "Flr" }
-  ]);
-  const [states, setStates] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "AA" },
-    { id: "2", value: "AE" },
-    { id: "3", value: "AK" },
-    { id: "4", value: "AL" },
-    { id: "5", value: "AP" },
-    { id: "6", value: "AR" },
-    { id: "7", value: "AS" },
-    { id: "8", value: "AZ" },
-    { id: "9", value: "CA" },
-    { id: "10", value: "CO" },
-    { id: "11", value: "CT" },
-    { id: "12", value: "DC" },
-    { id: "13", value: "DE" },
-    { id: "14", value: "FL" },
-    { id: "15", value: "FM" },
-    { id: "16", value: "GA" },
-    { id: "17", value: "GU" },
-    { id: "18", value: "HI" },
-    { id: "19", value: "IA" },
-    { id: "20", value: "ID" },
-    { id: "21", value: "IL" },
-    { id: "22", value: "IN" },
-    { id: "23", value: "KS" },
-    { id: "24", value: "KY" },
-    { id: "25", value: "LA" },
-    { id: "26", value: "MA" },
-    { id: "27", value: "MD" },
-    { id: "28", value: "ME" },
-    { id: "29", value: "MH" },
-    { id: "30", value: "MI" },
-    { id: "31", value: "MN" },
-    { id: "32", value: "MO" },
-    { id: "33", value: "MP" },
-    { id: "34", value: "MS" },
-    { id: "35", value: "MT" },
-    { id: "36", value: "NC" },
-    { id: "37", value: "ND" },
-    { id: "38", value: "NE" },
-    { id: "39", value: "NH" },
-    { id: "40", value: "NJ" },
-    { id: "41", value: "NM" },
-    { id: "42", value: "NV" },
-    { id: "43", value: "NY" },
-    { id: "44", value: "OH" },
-    { id: "45", value: "OK" },
-    { id: "46", value: "OR" },
-    { id: "47", value: "PA" },
-    { id: "48", value: "PR" },
-    { id: "49", value: "PW" },
-    { id: "50", value: "RI" },
-    { id: "51", value: "SC" },
-    { id: "52", value: "SD" },
-    { id: "53", value: "TN" },
-    { id: "54", value: "TX" },
-    { id: "55", value: "UT" },
-    { id: "56", value: "VA" },
-    { id: "57", value: "VI" },
-    { id: "58", value: "VT" },
-    { id: "59", value: "WA" },
-    { id: "60", value: "WI" },
-    { id: "61", value: "WV" },
-    { id: "62", value: "WY" }
-  ]);
-  const [wage, setWage] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "None" },
-    { id: "2", value: "Hour" },
-    { id: "3", value: "Week" },
-    { id: "4", value: "Month" },
-    { id: "5", value: "Year" }
-  ]);
-  const [yesOrNo, setYesOrNo] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Yes" },
-    { id: "2", value: "No" }
-  ]);
   const [formContent, setFormContent] = useState({});
   const [clientContent, setClientContent] = useState({
     id: "",
@@ -289,21 +157,22 @@ function I765(props) {
     console.log("clientResp");
     console.log(clientResp);
 
-    if (responseRecord.ok) Router.push("/success");
+    if (clientResp.ok && companyResp.ok && caseInfoResp.ok)
+      Router.push("/success");
     else alert("fail");
   }
 
   return (
     <>
       <I765Form
-        companyUnits={companyUnits}
-        states={states}
-        wage={wage}
+        companyUnits={choices.units}
+        states={choices.states}
+        wage={choices.wage}
         yesOrNo={choices.yesOrNo}
-        gender={gender}
-        maritial={maritial}
-        statusLastEntry={statusLastEntry}
-        eligibilityCategory={eligibilityCategory}
+        gender={choices.gender}
+        maritial={choices.maritial}
+        statusLastEntry={choices.statusLastEntry}
+        eligibilityCategory={choices.eligibilityCategory}
         clientContent={clientContent}
         companyContent={companyContent}
         caseInfoContent={caseInfoContent}

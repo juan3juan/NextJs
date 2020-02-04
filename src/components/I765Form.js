@@ -50,22 +50,22 @@ function I765Form(props) {
                   value={props.clientContent.phone}
                   onChange={props.onChange}
                 />
-                {/* <PickupList
+                <PickupList
                   label="Gender"
                   options={props.gender}
                   id="Gender"
                   name="Gender"
                   value={props.clientContent.Gender}
                   onChange={props.onChange}
-                /> */}
-                {/* <PickupList
+                />
+                <PickupList
                   label="Marital Status"
                   options={props.maritial}
                   id="Marital_Status"
                   name="Marital_Status"
                   value={props.clientContent.Marital_Status}
                   onChange={props.onChange}
-                /> */}
+                />
                 <TextInput
                   label="S.S.N."
                   type="text"
@@ -198,7 +198,7 @@ function I765Form(props) {
                   value={props.clientContent.Place_of_Last_Entry}
                   onChange={props.onChange}
                 />
-                {/* <PickupList
+                <PickupList
                   label="Status_of_Last_Entry"
                   options={props.statusLastEntry}
                   id="Status_of_Last_Entry"
@@ -213,7 +213,7 @@ function I765Form(props) {
                   name="Current_Status"
                   value={props.clientContent.Current_Status}
                   onChange={props.onChange}
-                /> */}
+                />
                 <TextInput
                   label="A Number"
                   type="text"
@@ -247,14 +247,14 @@ function I765Form(props) {
                     value={props.clientContent.Mailing_Street}
                     onChange={props.onChange}
                   />
-                  {/* <PickupList
+                  <PickupList
                     label="Mailing Unit"
                     options={props.companyUnits}
                     id="Mailing_Unit"
                     name="Mailing_Unit"
                     value={props.clientContent.Mailing_Unit}
                     onChange={props.onChange}
-                  /> */}
+                  />
                   <TextInput
                     label="Mailing Unit Number"
                     type="text"
@@ -273,14 +273,14 @@ function I765Form(props) {
                     value={props.clientContent.Mailing_City}
                     onChange={props.onChange}
                   />
-                  {/* <PickupList
+                  <PickupList
                     label="Mailing State"
                     options={props.states}
                     id="Mailing_State"
                     name="Mailing_State"
                     value={props.clientContent.Mailing_State}
                     onChange={props.onChange}
-                  /> */}
+                  />
                   <TextInput
                     label="Mailing Zip Code"
                     type="text"
@@ -312,14 +312,14 @@ function I765Form(props) {
                   />
                 </div>
                 <label className="head form-control">Other Information</label>
-                {/* <PickupList
+                <PickupList
                   label="Eligibility Category"
                   options={props.eligibilityCategory}
                   id="Eligibility_Category"
                   name="Eligibility_Category"
                   value={props.caseInfoContent.Eligibility_Category}
                   onChange={props.onChange}
-                /> */}
+                />
                 <TextInput
                   label="Type of US Degree"
                   type="text"

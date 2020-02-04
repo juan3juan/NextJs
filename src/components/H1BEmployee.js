@@ -6,116 +6,11 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Router from "next/router";
 import { withRouter } from "react-router-dom";
+import { choices } from "./common/choices";
 
 function H1BEmployee(props) {
   // for upload files
   const [selectedFile, setSelectedFile] = useState();
-
-  const [gender, setGender] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Male" },
-    { id: "2", value: "Female" }
-  ]);
-
-  const [currentStatus, setCurrentStatus] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Male" },
-    { id: "2", value: "Female" }
-  ]);
-
-  const [yesOrNo, setYesOrNo] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Yes" },
-    { id: "2", value: "No" }
-  ]);
-
-  const [typeOfPetition, setTypeOfPetition] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Bachelor" },
-    { id: "2", value: "Master" },
-    { id: "3", value: "Chile/Singapore" },
-    { id: "4", value: "Exempt" }
-  ]);
-
-  const [highestEducation, setHighestEducation] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Associate's degree" },
-    { id: "2", value: "Bachelor's degree" },
-    { id: "3", value: "Master's degree" },
-    { id: "4", value: "Doctorate degree" }
-  ]);
-  const [currentUnits, setCurrentUnits] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "Apt" },
-    { id: "2", value: "Ste" },
-    { id: "3", value: "Flr" }
-  ]);
-  const [states, setStates] = useState([
-    { id: "0", value: "" },
-    { id: "1", value: "AA" },
-    { id: "2", value: "AE" },
-    { id: "3", value: "AK" },
-    { id: "4", value: "AL" },
-    { id: "5", value: "AP" },
-    { id: "6", value: "AR" },
-    { id: "7", value: "AS" },
-    { id: "8", value: "AZ" },
-    { id: "9", value: "CA" },
-    { id: "10", value: "CO" },
-    { id: "11", value: "CT" },
-    { id: "12", value: "DC" },
-    { id: "13", value: "DE" },
-    { id: "14", value: "FL" },
-    { id: "15", value: "FM" },
-    { id: "16", value: "GA" },
-    { id: "17", value: "GU" },
-    { id: "18", value: "HI" },
-    { id: "19", value: "IA" },
-    { id: "20", value: "ID" },
-    { id: "21", value: "IL" },
-    { id: "22", value: "IN" },
-    { id: "23", value: "KS" },
-    { id: "24", value: "KY" },
-    { id: "25", value: "LA" },
-    { id: "26", value: "MA" },
-    { id: "27", value: "MD" },
-    { id: "28", value: "ME" },
-    { id: "29", value: "MH" },
-    { id: "30", value: "MI" },
-    { id: "31", value: "MN" },
-    { id: "32", value: "MO" },
-    { id: "33", value: "MP" },
-    { id: "34", value: "MS" },
-    { id: "35", value: "MT" },
-    { id: "36", value: "NC" },
-    { id: "37", value: "ND" },
-    { id: "38", value: "NE" },
-    { id: "39", value: "NH" },
-    { id: "40", value: "NJ" },
-    { id: "41", value: "NM" },
-    { id: "42", value: "NV" },
-    { id: "43", value: "NY" },
-    { id: "44", value: "OH" },
-    { id: "45", value: "OK" },
-    { id: "46", value: "OR" },
-    { id: "47", value: "PA" },
-    { id: "48", value: "PR" },
-    { id: "49", value: "PW" },
-    { id: "50", value: "RI" },
-    { id: "51", value: "SC" },
-    { id: "52", value: "SD" },
-    { id: "53", value: "TN" },
-    { id: "54", value: "TX" },
-    { id: "55", value: "UT" },
-    { id: "56", value: "VA" },
-    { id: "57", value: "VI" },
-    { id: "58", value: "VT" },
-    { id: "59", value: "WA" },
-    { id: "60", value: "WI" },
-    { id: "61", value: "WV" },
-    { id: "62", value: "WY" }
-  ]);
-
   const [formContent, setFormContent] = useState({
     id: "",
     First_Name: "",
@@ -301,13 +196,13 @@ function H1BEmployee(props) {
         onSubmit={handleSubmit}
         onChangeUpload={onChangeUpload}
         onClickUpload={onClickUpload}
-        Gender={gender}
-        yesOrNo={yesOrNo}
-        currentStatus={currentStatus}
-        currentUnits={currentUnits}
-        states={states}
-        typeOfPetition={typeOfPetition}
-        highestEducation={highestEducation}
+        Gender={choices.gender}
+        yesOrNo={choices.yesOrNo}
+        currentStatus={choices.maritial}
+        currentUnits={choices.units}
+        states={choices.states}
+        typeOfPetition={choices.typeOfPetition}
+        highestEducation={choices.highestEducation}
       />
     </>
   );
