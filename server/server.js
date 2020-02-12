@@ -384,7 +384,6 @@ app.prepare().then(() => {
       ")and(IsPetitionerOrEmployer:equals:Beneficiary)";
     //"((Phone:equals:123456)and(Last_Name:equals:test-20190825))";
     console.log("criteriaCombine");
-
     console.log(criteriaCombine);
     //criteria.Last_Name = "test-20190825";
     let params = {};
@@ -396,11 +395,10 @@ app.prepare().then(() => {
     input.params = params;
     console.log("input");
     console.log(input);
-    console.log(criteria);
 
     ZCRMRestClient.API.MODULES.search(input).then(function(response) {
       let data = JSON.parse(response.body).data;
-      //console.log(response.body);
+      console.log(response.body);
       // let result = wrap.wrapresult(input.module, data);
       // res.set("Content-Type", "text/html");
       // res.send(result);

@@ -95,7 +95,8 @@ function Login765(props) {
     if (vcode.vcodeInput.toUpperCase() === vcode.vcodeProduce.toUpperCase()) {
       zohoApi.searchRecordByCriteria(props.criteria).then(records => {
         console.log("records");
-        console.log(records.length);
+        console.log(records[0].PIN);
+
         if (records[0].PIN === userData.pin) {
           let encryptID = Base64.encode(records[0].id);
           const url = "/questionnaire765/" + encryptID;

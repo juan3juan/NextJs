@@ -68,57 +68,60 @@ function I765(props) {
       console.log("choices");
       console.log(choices.yesOrNo);
       // get record from client
-      zohoApi
-        .getRecordByID(records[0].Related_Client.id, "Contacts")
-        .then(clientRecords => {
-          console.log("clientRecords");
-          console.log(clientRecords[0]);
-          setClientContent({
-            ...clientContent,
-            id: clientRecords[0].id,
-            First_Name: clientRecords[0].First_Name,
-            Last_Name: clientRecords[0].Last_Name,
-            Phone: clientRecords[0].Phone,
-            Gender: clientRecords[0].Gender,
-            Marital_Status: clientRecords[0].Marital_Status,
-            SSN: clientRecords[0].SSN,
-            Mailing_Street: clientRecords[0].Mailing_Street,
-            Mailing_Unit: clientRecords[0].Mailing_Unit,
-            Mailing_Unit_Number: clientRecords[0].Mailing_Unit_Number,
-            Mailing_City: clientRecords[0].Mailing_City,
-            Mailing_State: clientRecords[0].Mailing_State,
-            Mailing_Zip: clientRecords[0].Mailing_Zip,
-            Father_s_Last_Name: clientRecords[0].Father_s_Last_Name,
-            Father_s_First_Name: clientRecords[0].Father_s_First_Name,
-            Mother_s_Last_Name: clientRecords[0].Mother_s_Last_Name,
-            Mother_s_First_Name: clientRecords[0].Mother_s_First_Name,
-            Country_of_Citizenship: clientRecords[0].Country_of_Citizenship,
-            City_of_Birth: clientRecords[0].City_of_Birth,
-            Province_of_Birth: clientRecords[0].Province_of_Birth,
-            Country_of_Birth: clientRecords[0].City_of_Birth,
-            Date_of_Birth: clientRecords[0].Date_of_Birth,
-            I_94_No: clientRecords[0].I_94_No,
-            Passport_Number: clientRecords[0].Passport_Number,
-            Date_Passport_Expired: clientRecords[0].Date_Passport_Expired,
-            Date_of_Last_Entry: clientRecords[0].Date_of_Last_Entry,
-            Place_of_Last_Entry: clientRecords[0].Place_of_Last_Entry,
-            Status_of_Last_Entry: clientRecords[0].Status_of_Last_Entry,
-            Current_Status: clientRecords[0].Current_Status,
-            A_Number: clientRecords[0].A_Number,
-            SEVIS_No: clientRecords[0].SEVIS_No
+      if (records[0].Related_Client != null) {
+        zohoApi
+          .getRecordByID(records[0].Related_Client.id, "Contacts")
+          .then(clientRecords => {
+            console.log("clientRecords");
+            console.log(clientRecords[0]);
+            setClientContent({
+              ...clientContent,
+              id: clientRecords[0].id,
+              First_Name: clientRecords[0].First_Name,
+              Last_Name: clientRecords[0].Last_Name,
+              Phone: clientRecords[0].Phone,
+              Gender: clientRecords[0].Gender,
+              Marital_Status: clientRecords[0].Marital_Status,
+              SSN: clientRecords[0].SSN,
+              Mailing_Street: clientRecords[0].Mailing_Street,
+              Mailing_Unit: clientRecords[0].Mailing_Unit,
+              Mailing_Unit_Number: clientRecords[0].Mailing_Unit_Number,
+              Mailing_City: clientRecords[0].Mailing_City,
+              Mailing_State: clientRecords[0].Mailing_State,
+              Mailing_Zip: clientRecords[0].Mailing_Zip,
+              Father_s_Last_Name: clientRecords[0].Father_s_Last_Name,
+              Father_s_First_Name: clientRecords[0].Father_s_First_Name,
+              Mother_s_Last_Name: clientRecords[0].Mother_s_Last_Name,
+              Mother_s_First_Name: clientRecords[0].Mother_s_First_Name,
+              Country_of_Citizenship: clientRecords[0].Country_of_Citizenship,
+              City_of_Birth: clientRecords[0].City_of_Birth,
+              Province_of_Birth: clientRecords[0].Province_of_Birth,
+              Country_of_Birth: clientRecords[0].City_of_Birth,
+              Date_of_Birth: clientRecords[0].Date_of_Birth,
+              I_94_No: clientRecords[0].I_94_No,
+              Passport_Number: clientRecords[0].Passport_Number,
+              Date_Passport_Expired: clientRecords[0].Date_Passport_Expired,
+              Date_of_Last_Entry: clientRecords[0].Date_of_Last_Entry,
+              Place_of_Last_Entry: clientRecords[0].Place_of_Last_Entry,
+              Status_of_Last_Entry: clientRecords[0].Status_of_Last_Entry,
+              Current_Status: clientRecords[0].Current_Status,
+              A_Number: clientRecords[0].A_Number,
+              SEVIS_No: clientRecords[0].SEVIS_No
+            });
           });
-        });
-      zohoApi
-        .getRecordByID(records[0].Related_Company.id, "Accounts")
-        .then(companyRecords => {
-          setCompanyContent({
-            ...companyContent,
-            id: companyRecords[0].id,
-            Account_Number: companyRecords[0].Account_Number,
-            E_Verify_ID: companyRecords[0].E_Verify_ID
+      }
+      if (records[0].Related_Company != null) {
+        zohoApi
+          .getRecordByID(records[0].Related_Company.id, "Accounts")
+          .then(companyRecords => {
+            setCompanyContent({
+              ...companyContent,
+              id: companyRecords[0].id,
+              Account_Number: companyRecords[0].Account_Number,
+              E_Verify_ID: companyRecords[0].E_Verify_ID
+            });
           });
-        });
-
+      }
       setCaseInfoContent({
         ...caseInfoContent,
         id: records[0].id,
