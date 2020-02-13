@@ -5,7 +5,7 @@ import PickupList from "./common/PickupList";
 function EmployeeForm(props) {
   return (
     <div className="container-fluid">
-      <h1 className="title"> H-1B EMPLOYER QUESTIONNAIRE</h1>
+      <h1 className="title"> H-1B EMPLOYEE QUESTIONNAIRE</h1>
       <form className="form">
         <div className="container">
           <div className="row">

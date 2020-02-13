@@ -57,6 +57,16 @@ function Login1(props) {
   // randomly produce 4 nums/chars
   function getRandom(max, min, num) {
     const asciiNum = ~~(Math.random() * (max - min + 1) + min);
+    if (
+      asciiNum === 48 ||
+      asciiNum === 49 ||
+      asciiNum === 73 ||
+      asciiNum === 76 ||
+      asciiNum === 79 ||
+      asciiNum === 105 ||
+      asciiNum === 108
+    )
+      return getRandom(max, min, num);
     if (!Boolean(num)) {
       return asciiNum;
     }
