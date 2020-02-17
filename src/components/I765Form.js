@@ -41,42 +41,55 @@ function I765Form(props) {
                   value={props.clientContent.Last_Name}
                   onChange={props.onChange}
                 />
-                <TextInput
-                  label="Other First Name 1"
-                  type="text"
-                  placeholder="Other First Name 1"
-                  id="Other_First_Name_1"
-                  name="Other_First_Name_1"
-                  value={props.clientContent.Other_First_Name_1}
+                <PickupList
+                  label="Has other name before"
+                  options={props.yesOrNo}
+                  id="Has_Other_Name"
+                  name="Has_Other_Name"
+                  value={props.clientContent.Has_Other_Name}
                   onChange={props.onChange}
                 />
-                <TextInput
-                  label="Other Last Name 1"
-                  type="text"
-                  placeholder="Other Last Name 1"
-                  id="Other_Last_Name_1"
-                  name="Other_Last_Name_1"
-                  value={props.clientContent.Other_Last_Name_1}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Other First Name 2"
-                  type="text"
-                  placeholder="Other First Name 2"
-                  id="Other_First_Name_2"
-                  name="Other_First_Name_2"
-                  value={props.clientContent.Other_First_Name_2}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Other Last Name 2"
-                  type="text"
-                  placeholder="Other Last Name 2"
-                  id="Other_Last_Name_2"
-                  name="Other_Last_Name_2"
-                  value={props.clientContent.Other_Last_Name_2}
-                  onChange={props.onChange}
-                />
+                {props.clientContent.Has_Other_Name === "Yes" ? (
+                  <>
+                    <TextInput
+                      label="Other First Name 1"
+                      type="text"
+                      placeholder="Other First Name 1"
+                      id="Other_First_Name_1"
+                      name="Other_First_Name_1"
+                      value={props.clientContent.Other_First_Name_1}
+                      onChange={props.onChange}
+                    />
+                    <TextInput
+                      label="Other Last Name 1"
+                      type="text"
+                      placeholder="Other Last Name 1"
+                      id="Other_Last_Name_1"
+                      name="Other_Last_Name_1"
+                      value={props.clientContent.Other_Last_Name_1}
+                      onChange={props.onChange}
+                    />
+                    <TextInput
+                      label="Other First Name 2"
+                      type="text"
+                      placeholder="Other First Name 2"
+                      id="Other_First_Name_2"
+                      name="Other_First_Name_2"
+                      value={props.clientContent.Other_First_Name_2}
+                      onChange={props.onChange}
+                    />
+                    <TextInput
+                      label="Other Last Name 2"
+                      type="text"
+                      placeholder="Other Last Name 2"
+                      id="Other_Last_Name_2"
+                      name="Other_Last_Name_2"
+                      value={props.clientContent.Other_Last_Name_2}
+                      onChange={props.onChange}
+                    />
+                  </>
+                ) : null}
+
                 <TextInput
                   label="Phone"
                   type="phone"
@@ -368,7 +381,7 @@ function I765Form(props) {
                     value={props.caseInfoContent.Has_SSA}
                     onChange={props.onChange}
                   />
-                  {props.hasSSN === "No" ? (
+                  {props.caseInfoContent.Has_SSA === "No" ? (
                     <>
                       <TextInput
                         label="Father's First Name"
@@ -417,6 +430,15 @@ function I765Form(props) {
                     value={
                       props.caseInfoContent.Any_Same_Category_Petition_Before
                     }
+                    onChange={props.onChange}
+                  />
+                  <TextInput
+                    label="Principle Receipt Number"
+                    type="text"
+                    placeholder="Principle Receipt Number"
+                    id="Principle_Receipt_Number"
+                    name="Principle_Receipt_Number"
+                    value={props.clientContent.Principle_Receipt_Number}
                     onChange={props.onChange}
                   />
                 </div>

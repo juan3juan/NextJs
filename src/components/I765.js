@@ -13,6 +13,7 @@ function I765(props) {
     id: "",
     First_Name: "",
     Last_Name: "",
+    Has_Other_Name: "",
     Other_First_Name_1: "",
     Other_Last_Name_1: "",
     Other_First_Name_2: "",
@@ -45,7 +46,8 @@ function I765(props) {
     Current_Status: "",
     A_Number: "",
     SEVIS_No: "",
-    Is_mailing_address_same_as_physical_address: ""
+    Is_mailing_address_same_as_physical_address: "",
+    Principle_Receipt_Number: ""
   });
 
   const [companyContent, setCompanyContent] = useState({
@@ -121,7 +123,9 @@ function I765(props) {
               A_Number: clientRecords[0].A_Number,
               SEVIS_No: clientRecords[0].SEVIS_No,
               Is_mailing_address_same_as_physical_address:
-                clientRecords[0].Is_mailing_address_same_as_physical_address
+                clientRecords[0].Is_mailing_address_same_as_physical_address,
+              Principle_Receipt_Number:
+                clientRecords[0].Principle_Receipt_Number
             });
           });
       }
@@ -194,7 +198,6 @@ function I765(props) {
         caseInfoContent={caseInfoContent}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        hasSSN={caseInfoContent.Has_SSA}
       />
     </>
   );
