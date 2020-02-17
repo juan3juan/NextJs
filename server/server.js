@@ -213,10 +213,42 @@ app.prepare().then(() => {
   }
 
   server.get("/a", (req, res) => {
-    console.log("a-req.query :");
-    console.log(req.query);
-    return app.render(req, res, "/a", req.query);
+    // console.log("a-req.query :");
+    // console.log(req.query);
+    // return app.render(req, res, "/a", req.query);
+    try {
+      ZCRMRestClient.initialize().then(function() {
+        mysql_util.getOAuthTokens().then(function(result) {
+          if (result == null || result.length === 0) {
+            //This token needs to be updated for initialization
+            let token =
+              "1000.8b10455febcd56e8884f7d92799ec540.fd95d5251a143391c26791afc38c3aa2";
+            initialzie.getTokenOnetime(token);
+          } else {
+            getRecord(res);
+          }
+        });
+      });
+    } catch {
+      throw new Error("exception!\n" + e);
+    }
   });
+
+  function getRecord(res) {
+    let input = {};
+    input.module = "Deals";
+    input.id = "3890818000018755021";
+    //input.id = "3890818000013679004";
+
+    ZCRMRestClient.API.MODULES.get(input).then(function(response) {
+      let data = JSON.parse(response.body).data;
+      //console.log(data);
+      // let result = wrap.wrapresult(input.module, data);
+      // res.set("Content-Type", "text/html");
+      // res.send(result);
+      res.send(data);
+    });
+  }
 
   server.get("/b/:id", (req, res) => {
     res.send(req.params.id);

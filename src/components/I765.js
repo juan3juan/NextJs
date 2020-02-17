@@ -13,16 +13,20 @@ function I765(props) {
     id: "",
     First_Name: "",
     Last_Name: "",
+    Other_First_Name_1: "",
+    Other_Last_Name_1: "",
+    Other_First_Name_2: "",
+    Other_Last_Name_2: "",
     Phone: "",
     Gender: "",
     Marital_Status: "",
     SSN: "",
-    Mailing_Street: "",
-    Mailing_Unit: "",
-    Mailing_Unit_Number: "",
-    Mailing_City: "",
-    Mailing_State: "",
-    Mailing_Zip: "",
+    Other_Street: "",
+    Other_Unit: "",
+    Other_Unit_Number: "",
+    Other_City: "",
+    Other_State: "",
+    Other_Zip: "",
     Father_s_Last_Name: "",
     Father_s_First_Name: "",
     Mother_s_Last_Name: "",
@@ -40,7 +44,8 @@ function I765(props) {
     Status_of_Last_Entry: "",
     Current_Status: "",
     A_Number: "",
-    SEVIS_No: ""
+    SEVIS_No: "",
+    Is_mailing_address_same_as_physical_address: ""
   });
 
   const [companyContent, setCompanyContent] = useState({
@@ -51,8 +56,6 @@ function I765(props) {
 
   const [caseInfoContent, setCaseInfoContent] = useState({
     id: "",
-    Eligibility_Category: "",
-    Type_of_U_S_Degree: "",
     Has_SSA: "",
     Any_Same_Category_Petition_Before: ""
   });
@@ -79,6 +82,10 @@ function I765(props) {
               id: clientRecords[0].id,
               First_Name: clientRecords[0].First_Name,
               Last_Name: clientRecords[0].Last_Name,
+              Other_First_Name_1: clientRecords[0].Other_First_Name_1,
+              Other_Last_Name_1: clientRecords[0].Other_Last_Name_1,
+              Other_First_Name_2: clientRecords[0].Other_First_Name_2,
+              Other_Last_Name_2: clientRecords[0].Other_Last_Name_2,
               Phone: clientRecords[0].Phone,
               Gender: clientRecords[0].Gender,
               Marital_Status: clientRecords[0].Marital_Status,
@@ -89,6 +96,12 @@ function I765(props) {
               Mailing_City: clientRecords[0].Mailing_City,
               Mailing_State: clientRecords[0].Mailing_State,
               Mailing_Zip: clientRecords[0].Mailing_Zip,
+              Other_Street: clientRecords[0].Other_Street,
+              Other_Unit: clientRecords[0].Other_Unit,
+              Other_Unit_Number: clientRecords[0].Other_Unit_Number,
+              Other_City: clientRecords[0].Other_City,
+              Other_State: clientRecords[0].Other_State,
+              Other_Zip: clientRecords[0].Other_Zip,
               Father_s_Last_Name: clientRecords[0].Father_s_Last_Name,
               Father_s_First_Name: clientRecords[0].Father_s_First_Name,
               Mother_s_Last_Name: clientRecords[0].Mother_s_Last_Name,
@@ -106,7 +119,9 @@ function I765(props) {
               Status_of_Last_Entry: clientRecords[0].Status_of_Last_Entry,
               Current_Status: clientRecords[0].Current_Status,
               A_Number: clientRecords[0].A_Number,
-              SEVIS_No: clientRecords[0].SEVIS_No
+              SEVIS_No: clientRecords[0].SEVIS_No,
+              Is_mailing_address_same_as_physical_address:
+                clientRecords[0].Is_mailing_address_same_as_physical_address
             });
           });
       }
@@ -125,8 +140,6 @@ function I765(props) {
       setCaseInfoContent({
         ...caseInfoContent,
         id: records[0].id,
-        Eligibility_Category: records[0].Eligibility_Category,
-        Type_of_U_S_Degree: records[0].Type_of_U_S_Degree,
         Has_SSA: records[0].Has_SSA,
         Any_Same_Category_Petition_Before:
           records[0].Any_Same_Category_Petition_Before
@@ -181,6 +194,7 @@ function I765(props) {
         caseInfoContent={caseInfoContent}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        hasSSN={caseInfoContent.Has_SSA}
       />
     </>
   );

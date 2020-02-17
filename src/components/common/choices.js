@@ -47,6 +47,7 @@ export const choices = {
   units: ["", "Apt", "Ste", "Flr"],
   wage: ["", "Hour", "Week", "Month", "Year"],
   states: [
+    "",
     "AA",
     "AE",
     "AK",

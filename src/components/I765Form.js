@@ -42,6 +42,42 @@ function I765Form(props) {
                   onChange={props.onChange}
                 />
                 <TextInput
+                  label="Other First Name 1"
+                  type="text"
+                  placeholder="Other First Name 1"
+                  id="Other_First_Name_1"
+                  name="Other_First_Name_1"
+                  value={props.clientContent.Other_First_Name_1}
+                  onChange={props.onChange}
+                />
+                <TextInput
+                  label="Other Last Name 1"
+                  type="text"
+                  placeholder="Other Last Name 1"
+                  id="Other_Last_Name_1"
+                  name="Other_Last_Name_1"
+                  value={props.clientContent.Other_Last_Name_1}
+                  onChange={props.onChange}
+                />
+                <TextInput
+                  label="Other First Name 2"
+                  type="text"
+                  placeholder="Other First Name 2"
+                  id="Other_First_Name_2"
+                  name="Other_First_Name_2"
+                  value={props.clientContent.Other_First_Name_2}
+                  onChange={props.onChange}
+                />
+                <TextInput
+                  label="Other Last Name 2"
+                  type="text"
+                  placeholder="Other Last Name 2"
+                  id="Other_Last_Name_2"
+                  name="Other_Last_Name_2"
+                  value={props.clientContent.Other_Last_Name_2}
+                  onChange={props.onChange}
+                />
+                <TextInput
                   label="Phone"
                   type="phone"
                   placeholder="phone"
@@ -76,42 +112,6 @@ function I765Form(props) {
                   onChange={props.onChange}
                 />
 
-                <TextInput
-                  label="Father's First Name"
-                  type="text"
-                  placeholder="Father's First Name"
-                  id="Father_s_First_Name"
-                  name="Father_s_First_Name"
-                  value={props.clientContent.Father_s_First_Name}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Father's Last Name"
-                  type="text"
-                  placeholder="Father's Last Name"
-                  id="Father_s_Last_Name"
-                  name="Father_s_Last_Name"
-                  value={props.clientContent.Father_s_Last_Name}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Mother's First Name"
-                  type="text"
-                  placeholder="Mother's First Name"
-                  id="Mother_s_First_Name"
-                  name="Mother_s_First_Name"
-                  value={props.clientContent.Mother_s_First_Name}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Mother's Last Name"
-                  type="text"
-                  placeholder="Mother's Last Name"
-                  id="Mother_s_Last_Name"
-                  name="Mother_s_Last_Name"
-                  value={props.clientContent.Mother_s_Last_Name}
-                  onChange={props.onChange}
-                />
                 <TextInput
                   label="Country of Citizenship"
                   type="text"
@@ -289,79 +289,137 @@ function I765Form(props) {
                     value={props.clientContent.Mailing_Zip}
                     onChange={props.onChange}
                   />
+                  <PickupList
+                    label="Is mailing address same as physical address?"
+                    options={props.yesOrNo}
+                    id="Is_mailing_address_same_as_physical_address"
+                    name="Is_mailing_address_same_as_physical_address"
+                    value={
+                      props.clientContent
+                        .Is_mailing_address_same_as_physical_address
+                    }
+                    onChange={props.onChange}
+                  />
+                  {props.clientContent
+                    .Is_mailing_address_same_as_physical_address === "No" ? (
+                    <>
+                      <TextInput
+                        label="Other Street"
+                        type="text"
+                        placeholder="Other Street"
+                        id="Other_Street"
+                        name="Other_Street"
+                        value={props.clientContent.Other_Street}
+                        onChange={props.onChange}
+                      />
+                      <PickupList
+                        label="Other Unit"
+                        options={props.companyUnits}
+                        id="Other_Unit"
+                        name="Other_Unit"
+                        value={props.clientContent.Other_Unit}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Other Unit Number"
+                        type="text"
+                        placeholder="Other_Unit_Number"
+                        id="Other_Unit_Number"
+                        name="Other_Unit_Number"
+                        value={props.clientContent.Other_Unit_Number}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Other City"
+                        type="text"
+                        placeholder="Other_City"
+                        id="Other_City"
+                        name="Other_City"
+                        value={props.clientContent.Other_City}
+                        onChange={props.onChange}
+                      />
+                      <PickupList
+                        label="Other State"
+                        options={props.states}
+                        id="Other_State"
+                        name="Other_State"
+                        value={props.clientContent.Other_State}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Other Zip Code"
+                        type="text"
+                        id="Other_Zip"
+                        name="Other_Zip"
+                        value={props.clientContent.Other_Zip}
+                        onChange={props.onChange}
+                      />
+                    </>
+                  ) : null}
                 </div>
+
                 <div className="section1">
-                  <label className="head form-control">
-                    Company Information
-                  </label>
-                  <TextInput
-                    label="Employer Name"
-                    type="text"
-                    id="Account_Number"
-                    name="Account_Number"
-                    value={props.companyContent.Account_Number}
+                  <label className="head form-control">Other Information</label>
+                  <PickupList
+                    label="Has_SSN"
+                    options={props.yesOrNo}
+                    id="Has_SSA"
+                    name="Has_SSA"
+                    value={props.caseInfoContent.Has_SSA}
                     onChange={props.onChange}
                   />
-                  <TextInput
-                    label="Employer ID"
-                    type="text"
-                    id="E_Verify_ID"
-                    name="E_Verify_ID"
-                    value={props.companyContent.E_Verify_ID}
+                  {props.hasSSN === "No" ? (
+                    <>
+                      <TextInput
+                        label="Father's First Name"
+                        type="text"
+                        placeholder="Father's First Name"
+                        id="Father_s_First_Name"
+                        name="Father_s_First_Name"
+                        value={props.clientContent.Father_s_First_Name}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Father's Last Name"
+                        type="text"
+                        placeholder="Father's Last Name"
+                        id="Father_s_Last_Name"
+                        name="Father_s_Last_Name"
+                        value={props.clientContent.Father_s_Last_Name}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Mother's First Name"
+                        type="text"
+                        placeholder="Mother's First Name"
+                        id="Mother_s_First_Name"
+                        name="Mother_s_First_Name"
+                        value={props.clientContent.Mother_s_First_Name}
+                        onChange={props.onChange}
+                      />
+                      <TextInput
+                        label="Mother's Last Name"
+                        type="text"
+                        placeholder="Mother's Last Name"
+                        id="Mother_s_Last_Name"
+                        name="Mother_s_Last_Name"
+                        value={props.clientContent.Mother_s_Last_Name}
+                        onChange={props.onChange}
+                      />{" "}
+                    </>
+                  ) : null}
+
+                  <PickupList
+                    label="Any Same Category Petition Before"
+                    options={props.yesOrNo}
+                    id="Any_Same_Category_Petition_Before"
+                    name="Any_Same_Category_Petition_Before"
+                    value={
+                      props.caseInfoContent.Any_Same_Category_Petition_Before
+                    }
                     onChange={props.onChange}
                   />
                 </div>
-                <label className="head form-control">Other Information</label>
-                <PickupList
-                  label="Eligibility Category"
-                  options={props.eligibilityCategory}
-                  id="Eligibility_Category"
-                  name="Eligibility_Category"
-                  value={props.caseInfoContent.Eligibility_Category}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Type of US Degree"
-                  type="text"
-                  id="Type_of_U_S_Degree"
-                  name="Type_of_U_S_Degree"
-                  value={props.caseInfoContent.Type_of_U_S_Degree}
-                  onChange={props.onChange}
-                />
-                <PickupList
-                  label="Has_SSA"
-                  options={props.yesOrNo}
-                  id="Has_SSA"
-                  name="Has_SSA"
-                  value={props.caseInfoContent.Has_SSA}
-                  onChange={props.onChange}
-                />
-                <PickupList
-                  label="Any Same Category Petition Before"
-                  options={props.yesOrNo}
-                  id="Any_Same_Category_Petition_Before"
-                  name="Any_Same_Category_Petition_Before"
-                  value={
-                    props.caseInfoContent.Any_Same_Category_Petition_Before
-                  }
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Preparer First Name"
-                  type="text"
-                  id="Preparer_First_Name"
-                  name="Preparer_First_Name"
-                  value={props.caseInfoContent.Preparer_First_Name}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Preparer Last Name"
-                  type="text"
-                  id="Preparer_Last_Name"
-                  name="Preparer_Last_Name"
-                  value={props.caseInfoContent.Preparer_Last_Name}
-                  onChange={props.onChange}
-                />
               </div>
               <input
                 id="submit"
