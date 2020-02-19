@@ -13,10 +13,9 @@ function H1BEmployer(props) {
   const [selectedFile, setSelectedFile] = useState();
   const [formContent, setFormContent] = useState({
     id: "",
-    First_Name: "",
-    Middle_Name: "",
-    Last_Name: "",
-    Last_Name: "",
+    Petitioner_First_Name: "",
+    Petitioner_Middle_Name: "",
+    Petitioner_Last_Name: "",
     Petitioner_Title: "",
     Petitioner_Daytime_Phone: "",
     Petitioner_Email: "",
@@ -68,9 +67,9 @@ function H1BEmployer(props) {
       setFormContent({
         ...formContent,
         id: records[0].id,
-        First_Name: records[0].First_Name,
-        Middle_Name: records[0].Middle_Name,
-        Last_Name: records[0].Last_Name,
+        Petitioner_First_Name: records[0].Petitioner_First_Name,
+        Petitioner_Middle_Name: records[0].Petitioner_Middle_Name,
+        Petitioner_Last_Name: records[0].Petitioner_Last_Name,
         Petitioner_Title: records[0].Petitioner_Title,
         Petitioner_Daytime_Phone: records[0].Petitioner_Daytime_Phone,
         Petitioner_Email: records[0].Petitioner_Email,
@@ -148,13 +147,16 @@ function H1BEmployer(props) {
   function onClickUpload(event) {
     event.preventDefault();
     const data = new FormData();
-    for (let x = 0; x < selectedFile.length; x++) {
-      data.append("file", selectedFile[x]);
+    if (selectedFile == null) alert("No File Upload!");
+    else {
+      for (let x = 0; x < selectedFile.length; x++) {
+        data.append("file", selectedFile[x]);
+      }
+      axios.post("http://localhost:3010/upload", data, {}).then(res => {
+        console.log(res.statusText);
+      });
+      alert("upload success!");
     }
-    axios.post("http://localhost:3010/upload", data, {}).then(res => {
-      console.log(res.statusText);
-    });
-    alert("upload success!");
   }
 
   return (

@@ -18,29 +18,29 @@ function EmployerForm(props) {
                 <TextInput
                   label="Company Signatory First Name"
                   type="text"
-                  placeholder="First Name"
-                  id="First_Name"
-                  name="First_Name"
-                  value={props.formContent.First_Name}
+                  placeholder="Petitioner First Name"
+                  id="Petitioner_First_Name"
+                  name="Petitioner_First_Name"
+                  value={props.formContent.Petitioner_First_Name}
                   onChange={props.onChange}
                 />
                 <TextInput
                   label="Company Signatory Middle Name"
                   type="text"
-                  placeholder="Middle Name"
-                  id="Middle_Name"
-                  name="Middle_Name"
-                  value={props.formContent.Middle_Name}
+                  placeholder="Petitioner Middle Name"
+                  id="Petitioner_Middle_Name"
+                  name="Petitioner_Middle_Name"
+                  value={props.formContent.Petitioner_Middle_Name}
                   onChange={props.onChange}
                 />
 
                 <TextInput
                   label="Company Signatory Last Name"
                   type="text"
-                  placeholder="Last Name"
-                  id="Last_Name"
-                  name="Last_Name"
-                  value={props.formContent.Last_Name}
+                  placeholder="Petitioner Last Name"
+                  id="Petitioner_Last_Name"
+                  name="Petitioner_Last_Name"
+                  value={props.formContent.Petitioner_Last_Name}
                   onChange={props.onChange}
                 />
                 <TextInput

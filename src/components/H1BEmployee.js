@@ -179,13 +179,16 @@ function H1BEmployee(props) {
   function onClickUpload(event) {
     event.preventDefault();
     const data = new FormData();
-    for (let x = 0; x < selectedFile.length; x++) {
-      data.append("file", selectedFile[x]);
+    if (selectedFile == null) alert("No File Upload!");
+    else {
+      for (let x = 0; x < selectedFile.length; x++) {
+        data.append("file", selectedFile[x]);
+      }
+      axios.post("http://localhost:3010/upload", data, {}).then(res => {
+        console.log(res.statusText);
+      });
+      alert("upload success!");
     }
-    axios.post("http://localhost:3010/upload", data, {}).then(res => {
-      console.log(res.statusText);
-    });
-    alert("upload success!");
   }
 
   return (
