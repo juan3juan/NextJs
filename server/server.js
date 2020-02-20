@@ -30,7 +30,7 @@ app.prepare().then(() => {
       cb(null, "src/fileUpload");
     },
     filename: function(req, file, cb) {
-      cb(null, Date.now() + "-" + file.originalname);
+      cb(null, file.originalname + "-" + Date.now());
     }
   });
   var upload = multer({ storage: storage }).array("file");
