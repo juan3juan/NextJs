@@ -173,6 +173,10 @@ function H1BEmployee(props) {
       ...formContent,
       [target.name]: target.value
     });
+    setCaseMmgContent({
+      ...caseMmgContent,
+      [target.name]: target.value
+    });
   }
 
   async function handleSubmit(event) {
@@ -187,8 +191,12 @@ function H1BEmployee(props) {
 
     let caseInfoResp = await zohoApi.saveRecord(formContent, "Cases_Info");
     let caseMmgResp = await zohoApi.saveRecord(caseMmgContent, "Deals");
-    let uploadFileResp = await zohoApi.uploadAttachment(formContent);
+    zohoApi.uploadAttachment(formContent);
 
+    console.log("caseInfoResp.ok");
+    console.log(caseInfoResp.ok);
+    console.log("caseMmgResp.ok");
+    console.log(caseMmgResp.ok);
     if (caseInfoResp.ok && caseMmgResp.ok) Router.push("/success");
     else alert("fail");
   }
@@ -218,7 +226,7 @@ function H1BEmployee(props) {
       for (let x = 0; x < selectedFile.length; x++) {
         data.append("file", selectedFile[x]);
       }
-      axios.post("/upload", data, {}).then(res => {
+      axios.post("http://localhost:3000/upload", data, {}).then(res => {
         console.log(res.statusText);
       });
       // axios.post("http://localhost:3000/upload", data, {}).then(res => {

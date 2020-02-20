@@ -122,6 +122,8 @@ function H1BEmployer(props) {
       console.log("responseRecord");
       console.log(responseRecord);
       zohoApi.uploadAttachment(formContent);
+      console.log("responseRecord.ok");
+      console.log(responseRecord.ok);
       if (responseRecord.ok) Router.push("/success");
       else alert("fail");
     });
@@ -152,7 +154,7 @@ function H1BEmployer(props) {
       for (let x = 0; x < selectedFile.length; x++) {
         data.append("file", selectedFile[x]);
       }
-      axios.post("/upload", data, {}).then(res => {
+      axios.post("http://localhost:3000/upload", data, {}).then(res => {
         console.log(res.statusText);
       });
       alert("upload success!");

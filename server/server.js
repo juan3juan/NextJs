@@ -93,9 +93,9 @@ app.prepare().then(() => {
           console.log(uploadFileResp);
           //delete the update file
           //  if(uploadFileResp==ok){
-          // fs.unlink(filepath, err => {
-          //   if (err) throw err;
-          // });
+          fs.unlink(filepath, err => {
+            if (err) throw err;
+          });
           //}
         });
       });
