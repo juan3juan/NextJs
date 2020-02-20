@@ -11,6 +11,15 @@ import { choices } from "./common/choices";
 function H1BEmployee(props) {
   // for upload files
   const [selectedFile, setSelectedFile] = useState();
+  const [caseMmgContent, setCaseMmgContent] = useState({
+    Receive_Any_Benefits: "",
+    All_Benefits_Received: [],
+    Benefits_Exempt: [],
+    Medicaid_Exempt: [],
+    Medicaid_Exempt_Start_Date: "",
+    Medicaid_Exempt_End_Date: ""
+  });
+
   const [formContent, setFormContent] = useState({
     id: "",
     First_Name: "",
@@ -82,6 +91,24 @@ function H1BEmployee(props) {
       //let data = JSON.parse(records.body);
       console.log("records :");
       console.log(records[0]);
+      if (records[0].Related_Case != null) {
+        zohoApi
+          .getRecordByID(records[0].Related_Case.id, "Deals")
+          .then(caseMmgRecords => {
+            setCaseMmgContent({
+              ...caseMmgContent,
+              id: caseMmgRecords[0].id,
+              Receive_Any_Benefits: caseMmgRecords[0].Receive_Any_Benefits,
+              All_Benefits_Received: caseMmgRecords[0].All_Benefits_Received,
+              Benefits_Exempt: caseMmgRecords[0].Benefits_Exempt,
+              Medicaid_Exempt: caseMmgRecords[0].Medicaid_Exempt,
+              Medicaid_Exempt_Start_Date:
+                caseMmgRecords[0].Medicaid_Exempt_Start_Date,
+              Medicaid_Exempt_End_Date:
+                caseMmgRecords[0].Medicaid_Exempt_End_Date
+            });
+          });
+      }
       setFormContent({
         ...formContent,
         id: records[0].id,
@@ -148,15 +175,22 @@ function H1BEmployee(props) {
     });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    zohoApi.saveRecord(formContent, "Cases_Info").then(responseRecord => {
-      console.log("responseRecord");
-      console.log(responseRecord);
-      zohoApi.uploadAttachment(formContent);
-      if (responseRecord.ok) Router.push("/success");
-      else alert("fail");
-    });
+    // zohoApi.saveRecord(formContent, "Cases_Info").then(responseRecord => {
+    //   console.log("responseRecord");
+    //   console.log(responseRecord);
+    //   zohoApi.uploadAttachment(formContent);
+    //   if (responseRecord.ok) Router.push("/success");
+    //   else alert("fail");
+    // });
+
+    let caseInfoResp = await zohoApi.saveRecord(formContent, "Cases_Info");
+    let caseMmgResp = await zohoApi.saveRecord(caseMmgContent, "Deals");
+    let uploadFileResp = await zohoApi.uploadAttachment(formContent);
+
+    if (caseInfoResp.ok && caseMmgResp.ok) Router.push("/success");
+    else alert("fail");
   }
 
   function onChangeUpload(event) {
@@ -184,7 +218,7 @@ function H1BEmployee(props) {
       for (let x = 0; x < selectedFile.length; x++) {
         data.append("file", selectedFile[x]);
       }
-      axios.post("http://localhost:3010/upload", data, {}).then(res => {
+      axios.post("http://localhost:3000/upload", data, {}).then(res => {
         console.log(res.statusText);
       });
       alert("upload success!");
@@ -195,17 +229,21 @@ function H1BEmployee(props) {
     <>
       <EmployeeForm
         formContent={formContent}
+        caseMmgContent={caseMmgContent}
         onChange={handleChange}
         onSubmit={handleSubmit}
         onChangeUpload={onChangeUpload}
         onClickUpload={onClickUpload}
         Gender={choices.gender}
         yesOrNo={choices.yesOrNo}
-        currentStatus={choices.maritial}
+        currentStatus={choices.statusLastEntry}
         currentUnits={choices.units}
         states={choices.states}
         typeOfPetition={choices.typeOfPetition}
         highestEducation={choices.highestEducation}
+        allBenefitsReceived={choices.allBenefitsReceived}
+        benefitsExempt={choices.benefitsExempt}
+        medicaidExempt={choices.medicaidExempt}
       />
     </>
   );

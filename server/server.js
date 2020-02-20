@@ -2,7 +2,7 @@ const express = require("express");
 const next = require("next");
 
 //const port = parseInt(process.env.PORT, 10) || 3010;
-const port = 3010;
+const port = 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -86,12 +86,17 @@ app.prepare().then(() => {
           let readStream = fs.createReadStream(filepath);
           input.x_file_content = readStream;
 
-          const uploadFile = ZCRMRestClient.API.ATTACHMENTS.uploadFile(input);
-          console.log(uploadFile);
+          const uploadFileResp = ZCRMRestClient.API.ATTACHMENTS.uploadFile(
+            input
+          );
+          console.log("uploadFileResp");
+          console.log(uploadFileResp);
           //delete the update file
+          //  if(uploadFileResp==ok){
           fs.unlink(filepath, err => {
             if (err) throw err;
           });
+          //}
         });
       });
     });

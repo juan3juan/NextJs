@@ -152,7 +152,7 @@ function H1BEmployer(props) {
       for (let x = 0; x < selectedFile.length; x++) {
         data.append("file", selectedFile[x]);
       }
-      axios.post("http://localhost:3010/upload", data, {}).then(res => {
+      axios.post("http://localhost:3000/upload", data, {}).then(res => {
         console.log(res.statusText);
       });
       alert("upload success!");

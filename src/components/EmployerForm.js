@@ -144,7 +144,7 @@ function EmployerForm(props) {
               />
               <TextInput
                 label="Year Established"
-                type="date"
+                type="text"
                 id="Year_Established"
                 name="Year_Established"
                 value={props.formContent.Year_Established}

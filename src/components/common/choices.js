@@ -46,6 +46,33 @@ export const choices = {
   ],
   units: ["", "Apt", "Ste", "Flr"],
   wage: ["", "Hour", "Week", "Month", "Year"],
+  allBenefitsReceived: [
+    "Cash Assistance",
+    "SSI",
+    "TANF",
+    "GA",
+    "Food Stamps",
+    "Housing Assistance",
+    "Rental Assistance",
+    "Public Housing",
+    "Federal Medicaid"
+  ],
+  benefitsExempt: [
+    "US Armed Force",
+    "Spouse Child in US Armed Force",
+    "Armed Force when Receive",
+    "PCGI Exempt",
+    "PCGI Waiver",
+    "Child for N600K",
+    "None of Above"
+  ],
+  medicaidExempt: [
+    "Emergency",
+    "IDEA",
+    "School Based",
+    "Under 21",
+    "60Days following End of Pregnancy"
+  ],
   states: [
     "",
     "AA",

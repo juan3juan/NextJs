@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "./common/TextInput";
 import PickupList from "./common/PickupList";
+import MultiSelect from "./common/MultiSelect";
 
 function EmployeeForm(props) {
   return (
@@ -127,7 +128,7 @@ function EmployeeForm(props) {
 
                 <TextInput
                   label="Date Passport Issued"
-                  type="text"
+                  type="date"
                   id="Date_Passport_Issued"
                   name="Date_Passport_Issued"
                   value={props.formContent.Date_Passport_Issued}
@@ -136,7 +137,7 @@ function EmployeeForm(props) {
 
                 <TextInput
                   label="Date Passport Expires"
-                  type="text"
+                  type="date"
                   id="Date_Passport_Expires"
                   name="Date_Passport_Expires"
                   value={props.formContent.Date_Passport_Expires}
@@ -153,7 +154,7 @@ function EmployeeForm(props) {
                 />
                 <TextInput
                   label="Date Status Expires"
-                  type="text"
+                  type="date"
                   id="Date_Status_Expires"
                   name="Date_Status_Expires"
                   value={props.formContent.Date_Status_Expires}
@@ -278,7 +279,7 @@ function EmployeeForm(props) {
                   Foreign Contact Information
                 </label>
                 <TextInput
-                  label="Consulate Office City ⚠️"
+                  label="Consulate Office City"
                   type="text"
                   id="Office_City"
                   name="Office_City"
@@ -354,6 +355,74 @@ function EmployeeForm(props) {
                   onChange={props.onChange}
                 />
               </div>
+
+              {/* <div className="section1">
+                <label className="head form-control">
+                  Public Charge Ground of Inadmissibility
+                </label>
+                <PickupList
+                  label="Receive Any Benefits"
+                  options={props.yesOrNo}
+                  id="Receive_Any_Benefits"
+                  name="Receive_Any_Benefits"
+                  value={props.caseMmgContent.Receive_Any_Benefits}
+                  onChange={props.onChange}
+                />
+                <div className="field">
+                  <select
+                    name="name"
+                    value={props.caseMmgContent.Receive_Any_Benefits}
+                    onChange={props.onChange}
+                    className="form-control"
+                    multiple
+                  >
+                    {props.allBenefitsReceived.map((opt, index) => (
+                      <option key={index}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+                <MultiSelect
+                  label="All Benefits Received"
+                  options={props.allBenefitsReceived}
+                  id="All_Benefits_Received"
+                  name="All_Benefits_Received"
+                  value={props.caseMmgContent.All_Benefits_Received}
+                  onChange={props.onChange}
+                />
+                <MultiSelect
+                  label="Benefits Exempt"
+                  options={props.benefitsExempt}
+                  id="Benefits_Exempt"
+                  name="Benefits_Exempt"
+                  value={props.caseMmgContent.Benefits_Exempt}
+                  onChange={props.onChange}
+                />
+                <MultiSelect
+                  label="Medicaid Exempt"
+                  options={props.medicaidExempt}
+                  id="Medicaid_Exempt"
+                  name="Medicaid_Exempt"
+                  value={props.caseMmgContent.Medicaid_Exempt}
+                  onChange={props.onChange}
+                />
+                <TextInput
+                  label="Medicaid Exempt Start Date"
+                  type="date"
+                  id="Medicaid_Exempt_Start_Date "
+                  name="Medicaid_Exempt_Start_Date"
+                  value={props.caseMmgContent.Medicaid_Exempt_Start_Date}
+                  onChange={props.onChange}
+                />
+                <TextInput
+                  label="Medicaid Exempt End Date"
+                  type="date"
+                  id="Medicaid_Exempt_End_Date"
+                  name="Medicaid_Exempt_End_Date"
+                  value={props.caseMmgContent.Medicaid_Exempt_End_Date}
+                  onChange={props.onChange}
+                />
+              </div> */}
+
               <div className="section1">
                 <label className="head form-control">Degree Information</label>
                 <PickupList
