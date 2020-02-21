@@ -48,6 +48,18 @@ export function uploadAttachment(record) {
   });
 }
 
+export function uploadFileServer(pb) {
+  return fetch("/upload", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      pb
+    })
+  }).then(function(response) {
+    if (response.ok) return response;
+  });
+}
+
 export function searchRecordByCriteria(criteria) {
   let url = "/searchRecord/" + criteria;
   return fetch(url).then(response => {

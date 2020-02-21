@@ -30,7 +30,15 @@ app.prepare().then(() => {
       cb(null, "src/fileUpload");
     },
     filename: function(req, file, cb) {
-      cb(null, Date.now() + "-" + file.originalname);
+      console.log("req.body.pb-filename");
+      console.log(req.body.pb);
+      // get current date
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+      var yyyy = today.getFullYear();
+      today = yyyy + mm + dd;
+      cb(null, req.body.pb + "-" + today + "-" + file.originalname);
     }
   });
   var upload = multer({ storage: storage }).array("file");
@@ -430,12 +438,9 @@ app.prepare().then(() => {
     let input = {};
     input.module = "Cases_Info";
     input.params = params;
-    console.log("input");
-    console.log(input);
 
     ZCRMRestClient.API.MODULES.search(input).then(function(response) {
       let data = JSON.parse(response.body).data;
-      console.log(response.body);
       // let result = wrap.wrapresult(input.module, data);
       // res.set("Content-Type", "text/html");
       // res.send(result);

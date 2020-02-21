@@ -149,6 +149,8 @@ function H1BEmployer(props) {
   function onClickUpload(event) {
     event.preventDefault();
     const data = new FormData();
+    data.append("pb", "Petitioner");
+
     if (selectedFile == null) alert("No File Upload!");
     else {
       for (let x = 0; x < selectedFile.length; x++) {
