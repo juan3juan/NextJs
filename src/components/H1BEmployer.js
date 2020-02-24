@@ -62,8 +62,8 @@ function H1BEmployer(props) {
     zohoApi.getRecordByID(props.id, "Cases_Info").then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
-      console.log("records :");
-      console.log(records[0]);
+      // console.log("records :");
+      // console.log(records[0]);
       setFormContent({
         ...formContent,
         id: records[0].id,

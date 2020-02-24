@@ -89,8 +89,8 @@ function H1BEmployee(props) {
     zohoApi.getRecordByID(props.id, "Cases_Info").then(function(records) {
       //zohoApi.getRecordByID(id).then(records => {
       //let data = JSON.parse(records.body);
-      console.log("records :");
-      console.log(records[0]);
+      // console.log("records :");
+      // console.log(records[0]);
       if (records[0].Related_Case != null) {
         zohoApi
           .getRecordByID(records[0].Related_Case.id, "Deals")
