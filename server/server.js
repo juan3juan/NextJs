@@ -294,6 +294,11 @@ app.prepare().then(() => {
     console.log(req.params);
     return app.render(req, res, "/questionnaire765", { id: req.params.id });
   });
+  server.get("/questionnaire131/:id", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/questionnaire131", { id: req.params.id });
+  });
 
   server.get("/login/:criteria", (req, res) => {
     console.log("post-req.query :");
@@ -311,6 +316,12 @@ app.prepare().then(() => {
     console.log("post-req.query :");
     console.log(req.params);
     return app.render(req, res, "/login765", { criteria: req.params.criteria });
+  });
+
+  server.get("/login131/:criteria", (req, res) => {
+    console.log("post-req.query :");
+    console.log(req.params);
+    return app.render(req, res, "/login131", { criteria: req.params.criteria });
   });
 
   // server.get("/:id", (req, res) => {
