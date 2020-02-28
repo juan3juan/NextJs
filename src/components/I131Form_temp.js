@@ -86,14 +86,6 @@ function I131Form(props) {
                   value={props.clientContent.S_S_N}
                   onChange={props.onChange}
                 />
-                <PickupList
-                  label="Current Status"
-                  options={props.statusLastEntry}
-                  id="Current_Status"
-                  name="Current_Status"
-                  value={props.clientContent.Current_Status}
-                  onChange={props.onChange}
-                />
                 <TextInput
                   label="A Number"
                   type="text"
@@ -180,38 +172,12 @@ function I131Form(props) {
             <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
               <div className="section1">
                 <label className="head form-control">
-                  Processing Information
+                  Foreign Contact Information
                 </label>
-                <PickupList
-                  label="I131 Application Type"
-                  options={props.I131ApplicationType}
-                  id="I131_Application_Type"
-                  name="I131_Application_Type"
-                  value={props.caseMmgContent.I131_Application_Type}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Date of Intended Departure"
-                  type="date"
-                  id="Date_of_Intended_Departure"
-                  name="Date_of_Intended_Departure"
-                  value={props.caseMmgContent.Date_of_Intended_Departure}
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Exected Length of Trips in days"
-                  type="text"
-                  id="Exected_Length_of_Trips_in_days"
-                  name="Exected_Length_of_Trips_in_days"
-                  value={props.caseMmgContent.Exected_Length_of_Trips_in_days}
-                  onChange={props.onChange}
-                />
               </div>
 
               <div className="section1">
-                <label className="head form-control">
-                  Attachment Information
-                </label>
+                <label className="head form-control">Degree Information</label>
 
                 <div className="form-group">
                   <label>Attachment(s)(Maximum three files)</label>

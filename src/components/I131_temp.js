@@ -15,10 +15,7 @@ function I131(props) {
     id: ""
   });
   const [caseMmgContent, setCaseMmgContent] = useState({
-    id: "",
-    I131_Application_Type: "",
-    Date_of_Intended_Departure: "",
-    Exected_Length_of_Trips_in_days: ""
+    id: ""
   });
   const [clientContent, setClientContent] = useState({
     id: "",
@@ -37,9 +34,7 @@ function I131(props) {
     Country_of_Citizenship: "",
     Country_of_Birth: "",
     Date_of_Birth: "",
-    A_Number: "",
-    Phone: "",
-    Current_Status: ""
+    A_Number: ""
   });
 
   useEffect(() => {
@@ -70,9 +65,7 @@ function I131(props) {
               Country_of_Citizenship: clientRecords[0].Country_of_Citizenship,
               Country_of_Birth: clientRecords[0].Country_of_Birth,
               Date_of_Birth: clientRecords[0].Date_of_Birth,
-              A_Number: clientRecords[0].A_Number,
-              Phone: clientRecords[0].Phone,
-              Current_Status: clientRecords[0].Current_Status
+              A_Number: clientRecords[0].A_Number
             });
           });
       }
@@ -82,12 +75,7 @@ function I131(props) {
           .then(casemmgRecords => {
             setCaseMmgContent({
               ...caseMmgContent,
-              id: casemmgRecords[0].id,
-              I131_Application_Type: casemmgRecords[0].I131_Application_Type,
-              Date_of_Intended_Departure:
-                casemmgRecords[0].Date_of_Intended_Departure,
-              Exected_Length_of_Trips_in_days:
-                casemmgRecords[0].Exected_Length_of_Trips_in_days
+              id: casemmgRecords[0].id
             });
           });
       }
@@ -163,14 +151,11 @@ function I131(props) {
       <I131Form
         formContent={formContent}
         clientContent={clientContent}
-        caseMmgContent={caseMmgContent}
         Units={choices.units}
         states={choices.states}
         wage={choices.wage}
         yesOrNo={choices.yesOrNo}
         Gender={choices.gender}
-        I131ApplicationType={choices.I131ApplicationType}
-        statusLastEntry={choices.statusLastEntry}
         onChange={handleChange}
         onSubmit={handleSubmit}
         onChangeUpload={onChangeUpload}

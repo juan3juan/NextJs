@@ -73,6 +73,11 @@ export const choices = {
     "Under 21",
     "60Days following End of Pregnancy"
   ],
+  I131ApplicationType: [
+    "",
+    "1_a_PR_ReentryPermit",
+    "1_d_TemporaryForeignTravel"
+  ],
   states: [
     "",
     "AA",
