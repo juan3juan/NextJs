@@ -24,6 +24,8 @@ export function getRecordByID(id, module) {
 }
 
 export function saveRecord(record, module) {
+  console.log("API---record");
+  console.log(record);
   return fetch("/saveRecord", {
     method: "POST",
     headers: { "content-type": "application/json" },
