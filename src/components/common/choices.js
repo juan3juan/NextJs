@@ -1,7 +1,15 @@
 export const choices = {
   yesOrNo: ["", "Yes", "No"],
   gender: ["", "Male", "Female"],
-  maritial: ["", "Single", "Married", "Divorced", "Widowed"],
+  maritial: [
+    "",
+    "Single",
+    "Married",
+    "Divorced",
+    "Widowed",
+    "Separated",
+    "Annulled"
+  ],
   typeOfPetition: ["", "Bachelor", "Master", "Chile/Singapore", "Exempt"],
   highestEducation: [
     "",
@@ -77,6 +85,33 @@ export const choices = {
     "",
     "1_a_PR_ReentryPermit",
     "1_d_TemporaryForeignTravel"
+  ],
+  CitizenOrPR: ["", "US Citizen", "Permanent Resident"],
+  AcquireCitizenshipThrough: ["", "Birth In US", "Naturalization", "Parents"],
+  Ethnicity: ["", "Hispanic or Latino", "Not Hispanic or Latino"],
+  EyeColor: [
+    "",
+    "Black",
+    "Blue",
+    "Brown",
+    "Gray",
+    "Green",
+    "Hazel",
+    "Maroon",
+    "Pink",
+    "Unknown/Other"
+  ],
+  HairColor: [
+    "",
+    "Bald (No hair)",
+    "Black",
+    "Blond",
+    "Brown",
+    "Gray",
+    "Red",
+    "Sandy",
+    "White",
+    "Unknown/Other"
   ],
   states: [
     "",
