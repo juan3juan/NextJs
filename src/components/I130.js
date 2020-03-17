@@ -17,7 +17,11 @@ function I130(props) {
   const [caseMmgContent, setCaseMmgContent] = useState({
     id: "",
     Anyone_Filed_for_This_Beneficiary_Before: "",
-    Was_Beneficiary_ever_in_the_US: ""
+    Was_Beneficiary_ever_in_the_US: "",
+    Relationship: "",
+    Child_Parent_Relationship: "",
+    Sibling_Related_by_adoption: "",
+    Gain_PR_Citizen_Through_Adoption: ""
   });
   const [clientContent, setClientContent] = useState({
     id: "",
@@ -242,7 +246,17 @@ function I130(props) {
             setCaseMmgContent({
               ...caseMmgContent,
               id: casemmgRecords[0].id,
-              Company_Petitioner: casemmgRecords[0].Company_Petitioner
+              Anyone_Filed_for_This_Beneficiary_Before:
+                casemmgRecords[0].Anyone_Filed_for_This_Beneficiary_Before,
+              Was_Beneficiary_ever_in_the_US:
+                casemmgRecords[0].Was_Beneficiary_ever_in_the_US,
+              Relationship: casemmgRecords[0].Relationship,
+              Child_Parent_Relationship:
+                casemmgRecords[0].Child_Parent_Relationship,
+              Sibling_Related_by_adoption:
+                casemmgRecords[0].Sibling_Related_by_adoption,
+              Gain_PR_Citizen_Through_Adoption:
+                casemmgRecords[0].Gain_PR_Citizen_Through_Adoption
             });
           });
       }
@@ -385,6 +399,8 @@ function I130(props) {
         Ethnicity={choices.Ethnicity}
         EyeColor={choices.EyeColor}
         HairColor={choices.HairColor}
+        I130ApplyFor={choices.I130ApplyFor}
+        I130ChildParentRelationship={choices.I130ChildParentRelationship}
         onChange={handleChange}
         onBeneficiaryChange={handleBeneficiaryChange}
         onCaseMmgChange={handleCaseMmgChange}

@@ -12,6 +12,112 @@ function I130Form(props) {
           <div className="row">
             <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
               <div className="section1">
+                <label className="head form-control">Case Information</label>
+                <PickupList
+                  label="I am filing this petition for my"
+                  options={props.I130ApplyFor}
+                  id="Relationship"
+                  name="Relationship"
+                  value={props.caseMmgContent.Relationship}
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="If you are filing this petition for your child or parent,select the box that describes your relationship"
+                  options={props.I130ChildParentRelationship}
+                  id="Child_Parent_Relationship"
+                  name="Child_Parent_Relationship"
+                  value={props.caseMmgContent.Child_Parent_Relationship}
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="If the beneficiary is your brother/sister, are you related by adoption?"
+                  options={props.yesOrNo}
+                  id="Sibling_Related_by_adoption"
+                  name="Sibling_Related_by_adoption"
+                  value={props.caseMmgContent.Sibling_Related_by_adoption}
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="Did you gain lawful permanent resident status or  citizenship through adoption?"
+                  options={props.yesOrNo}
+                  id="Gain_PR_Citizen_Through_Adoption"
+                  name="Gain_PR_Citizen_Through_Adoption"
+                  value={props.caseMmgContent.Gain_PR_Citizen_Through_Adoption}
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="Was Beneficiary ever in the US"
+                  options={props.yesOrNo}
+                  id="Was_Beneficiary_ever_in_the_US"
+                  name="Was_Beneficiary_ever_in_the_US"
+                  value={props.caseMmgContent.Was_Beneficiary_ever_in_the_US}
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="Was Beneficiary ever in immigration proceedings"
+                  options={props.yesOrNo}
+                  id="EVER_in_immigration_proceedings"
+                  name="EVER_in_immigration_proceedings"
+                  value={props.beneficiary.EVER_in_immigration_proceedings}
+                  onChange={props.onBeneficiaryChange}
+                />
+                <PickupList
+                  label="Ever Filed Petition For The Beneficiary or other alien"
+                  options={props.yesOrNo}
+                  id="Ever_Filed_Petition_For_The_Beneficiary"
+                  name="Ever_Filed_Petition_For_The_Beneficiary"
+                  value={
+                    props.caseMmgContent.Ever_Filed_Petition_For_The_Beneficiary
+                  }
+                  onChange={props.onCaseMmgChange}
+                />
+                <PickupList
+                  label="Is Beneficiary Currently in the US"
+                  options={props.yesOrNo}
+                  id="Is_Currently_In_US"
+                  name="Is_Currently_In_US"
+                  value={props.beneficiary.Is_Currently_In_US}
+                  onChange={props.onBeneficiaryChange}
+                />
+                {props.beneficiary.Is_Currently_In_US === "Yes" ? (
+                  <>
+                    <TextInput
+                      label="Beneficiary Status of Last Entry"
+                      type="text"
+                      id="Status_of_Last_Entry"
+                      name="Status_of_Last_Entry"
+                      value={props.beneficiary.Status_of_Last_Entry}
+                      onChange={props.onBeneficiaryChange}
+                    />
+                    <TextInput
+                      label="Beneficiary I-94 No."
+                      type="text"
+                      id="I_94_No"
+                      name="I_94_No"
+                      value={props.beneficiary.I_94_No}
+                      onChange={props.onBeneficiaryChange}
+                    />
+                    <TextInput
+                      label="Beneficiary Date of Last Entry"
+                      type="date"
+                      id="Date_of_Last_Entry"
+                      name="Date_of_Last_Entry"
+                      value={props.beneficiary.Date_of_Last_Entry}
+                      onChange={props.onBeneficiaryChange}
+                    />
+                    <TextInput
+                      label="Beneficiary Date of Current Status Expires"
+                      type="date"
+                      id="Current_Status_Expires"
+                      name="Current_Status_Expires"
+                      value={props.beneficiary.Current_Status_Expires}
+                      onChange={props.onBeneficiaryChange}
+                    />
+                  </>
+                ) : null}
+              </div>
+
+              <div className="section1">
                 <label className="head form-control">
                   Petitioner Basic Information
                 </label>
@@ -384,8 +490,9 @@ function I130Form(props) {
                 ) : null}
               </div>
             </div>
+
             <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-              <div className="section1">
+              {/* <div className="section1">
                 <label className="head form-control">
                   Marriage Information
                 </label>
@@ -405,7 +512,7 @@ function I130Form(props) {
                   value={props.marriageObj.State}
                   onChange={props.onMarriageChange}
                 />
-              </div>
+              </div> */}
 
               <div className="section1">
                 <label className="head form-control">
@@ -606,6 +713,38 @@ function I130Form(props) {
                   value={props.beneficiary.PR_Class_of_Admission}
                   onChange={props.onBeneficiaryChange}
                 />
+                <TextInput
+                  label="Passport Number"
+                  type="text"
+                  id="Passport_Number"
+                  name="Passport_Number"
+                  value={props.beneficiary.Passport_Number}
+                  onChange={props.onBeneficiaryChange}
+                />
+                <TextInput
+                  label="Travel Document Number"
+                  type="text"
+                  id="Travel_Document_Number"
+                  name="Travel_Document_Number"
+                  value={props.beneficiary.Travel_Document_Number}
+                  onChange={props.onBeneficiaryChange}
+                />
+                <TextInput
+                  label="Country Passport Issued"
+                  type="text"
+                  id="Country_Passport_Issued"
+                  name="Country_Passport_Issued"
+                  value={props.beneficiary.Country_Passport_Issued}
+                  onChange={props.onBeneficiaryChange}
+                />
+                <TextInput
+                  label="Date Passport Expired"
+                  type="date"
+                  id="Date_Passport_Expired"
+                  name="Date_Passport_Expired"
+                  value={props.beneficiary.Date_Passport_Expired}
+                  onChange={props.onBeneficiaryChange}
+                />
               </div>
 
               <div className="section1">
@@ -720,112 +859,6 @@ function I130Form(props) {
                       id="Other_Zip"
                       name="Other_Zip"
                       value={props.beneficiary.Other_Zip}
-                      onChange={props.onBeneficiaryChange}
-                    />
-                  </>
-                ) : null}
-              </div>
-
-              <div className="section1">
-                <label className="head form-control">Case Information</label>
-                <PickupList
-                  label="Was Beneficiary ever in the US"
-                  options={props.yesOrNo}
-                  id="Was_Beneficiary_ever_in_the_US"
-                  name="Was_Beneficiary_ever_in_the_US"
-                  value={props.caseMmgContent.Was_Beneficiary_ever_in_the_US}
-                  onChange={props.onCaseMmgChange}
-                />
-                <TextInput
-                  label="Passport Number"
-                  type="text"
-                  id="Passport_Number"
-                  name="Passport_Number"
-                  value={props.beneficiary.Passport_Number}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <TextInput
-                  label="Travel Document Number"
-                  type="text"
-                  id="Travel_Document_Number"
-                  name="Travel_Document_Number"
-                  value={props.beneficiary.Travel_Document_Number}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <TextInput
-                  label="Country Passport Issued"
-                  type="text"
-                  id="Country_Passport_Issued"
-                  name="Country_Passport_Issued"
-                  value={props.beneficiary.Country_Passport_Issued}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <TextInput
-                  label="Date Passport Expired"
-                  type="date"
-                  id="Date_Passport_Expired"
-                  name="Date_Passport_Expired"
-                  value={props.beneficiary.Date_Passport_Expired}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <PickupList
-                  label="EVER in immigration proceedings"
-                  options={props.yesOrNo}
-                  id="EVER_in_immigration_proceedings"
-                  name="EVER_in_immigration_proceedings"
-                  value={props.beneficiary.EVER_in_immigration_proceedings}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <PickupList
-                  label="Ever Filed Petition For The Beneficiary or other alien"
-                  options={props.yesOrNo}
-                  id="Ever_Filed_Petition_For_The_Beneficiary"
-                  name="Ever_Filed_Petition_For_The_Beneficiary"
-                  value={
-                    props.caseMmgContent.Ever_Filed_Petition_For_The_Beneficiary
-                  }
-                  onChange={props.onCaseMmgChange}
-                />
-                <PickupList
-                  label="Is Currently in the US"
-                  options={props.yesOrNo}
-                  id="Is_Currently_In_US"
-                  name="Is_Currently_In_US"
-                  value={props.beneficiary.Is_Currently_In_US}
-                  onChange={props.onBeneficiaryChange}
-                />
-                {props.beneficiary.Is_Currently_In_US === "Yes" ? (
-                  <>
-                    <TextInput
-                      label="Status of Last Entry"
-                      type="text"
-                      id="Status_of_Last_Entry"
-                      name="Status_of_Last_Entry"
-                      value={props.beneficiary.Status_of_Last_Entry}
-                      onChange={props.onBeneficiaryChange}
-                    />
-                    <TextInput
-                      label="I-94 No."
-                      type="text"
-                      id="I_94_No"
-                      name="I_94_No"
-                      value={props.beneficiary.I_94_No}
-                      onChange={props.onBeneficiaryChange}
-                    />
-                    <TextInput
-                      label="Date of Last Entry"
-                      type="date"
-                      id="Date_of_Last_Entry"
-                      name="Date_of_Last_Entry"
-                      value={props.beneficiary.Date_of_Last_Entry}
-                      onChange={props.onBeneficiaryChange}
-                    />
-                    <TextInput
-                      label="Date of Current Status Expires"
-                      type="date"
-                      id="Current_Status_Expires"
-                      name="Current_Status_Expires"
-                      value={props.beneficiary.Current_Status_Expires}
                       onChange={props.onBeneficiaryChange}
                     />
                   </>

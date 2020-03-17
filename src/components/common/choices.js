@@ -113,6 +113,14 @@ export const choices = {
     "White",
     "Unknown/Other"
   ],
+  I130ApplyFor: ["", "Spouse", "Parent", "Brother/Sister", "Child"],
+  I130ChildParentRelationship: [
+    "",
+    "Child Born When Parents Married",
+    "StepChild/Stepparent",
+    "Child Born When Parents Not Married",
+    "Child was Adopted"
+  ],
   states: [
     "",
     "AA",
