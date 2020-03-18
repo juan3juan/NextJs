@@ -266,14 +266,6 @@ function I130Form(props) {
                   onChange={props.onChange}
                 />
                 <PickupList
-                  label="Citizen or PR"
-                  options={props.CitizenOrPR}
-                  id="US_Citizen_PR"
-                  name="US_Citizen_PR"
-                  value={props.clientContent.US_Citizen_PR}
-                  onChange={props.onChange}
-                />
-                <PickupList
                   label="Acquire citizenship through"
                   options={props.AcquireCitizenshipThrough}
                   id="Acquire_citizenship_through"
@@ -290,14 +282,6 @@ function I130Form(props) {
                     props.clientContent
                       .Obtained_Certificate_of_Naturalization_or_Citizens
                   }
-                  onChange={props.onChange}
-                />
-                <TextInput
-                  label="Citizenship Certificate Number"
-                  type="text"
-                  id="Citizenship_Certificate_Number"
-                  name="Citizenship_Certificate_Number"
-                  value={props.clientContent.Citizenship_Certificate_Number}
                   onChange={props.onChange}
                 />
                 <TextInput
@@ -663,14 +647,6 @@ function I130Form(props) {
                   onChange={props.onBeneficiaryChange}
                 />
                 <PickupList
-                  label="Citizen or PR"
-                  options={props.CitizenOrPR}
-                  id="US_Citizen_PR"
-                  name="US_Citizen_PR"
-                  value={props.beneficiary.US_Citizen_PR}
-                  onChange={props.onBeneficiaryChange}
-                />
-                <PickupList
                   label="Acquire citizenship through"
                   options={props.AcquireCitizenshipThrough}
                   id="Acquire_citizenship_through"
@@ -687,14 +663,6 @@ function I130Form(props) {
                     props.beneficiary
                       .Obtained_Certificate_of_Naturalization_or_Citizens
                   }
-                  onChange={props.onBeneficiaryChange}
-                />
-                <TextInput
-                  label="Citizenship Certificate Number"
-                  type="text"
-                  id="Citizenship_Certificate_Number"
-                  name="Citizenship_Certificate_Number"
-                  value={props.beneficiary.Citizenship_Certificate_Number}
                   onChange={props.onBeneficiaryChange}
                 />
                 <TextInput
