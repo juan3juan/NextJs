@@ -350,18 +350,20 @@ function I130(props) {
 
   //split multi-line from CRM
   function splitMarriageInfo(info) {
-    let marriageObjRes = {};
-    //  let marriageInfo = clientContent.Marriage_Information.split(";");
-    let marriageInfo = info.split(";");
-    for (let i = 0; i < marriageInfo.length; i++) {
-      let splits = marriageInfo[i].split(":");
-      if (splits[0].includes("MarriedTimes"))
-        marriageObjRes.MarriedTimes = splits[1].trim();
-      if (splits[0].includes("DateOfCurrentMarriage"))
-        marriageObjRes.DateOfCurrentMarriage = splits[1].trim();
-      if (splits[0].includes("City")) marriageObjRes.City = splits[1].trim();
+    if (info !== undefined && info !== null) {
+      let marriageObjRes = {};
+      //  let marriageInfo = clientContent.Marriage_Information.split(";");
+      let marriageInfo = info.split(";");
+      for (let i = 0; i < marriageInfo.length; i++) {
+        let splits = marriageInfo[i].split(":");
+        if (splits[0].includes("MarriedTimes"))
+          marriageObjRes.MarriedTimes = splits[1].trim();
+        if (splits[0].includes("DateOfCurrentMarriage"))
+          marriageObjRes.DateOfCurrentMarriage = splits[1].trim();
+        if (splits[0].includes("City")) marriageObjRes.City = splits[1].trim();
+      }
+      setMarriageObj(marriageObjRes);
     }
-    setMarriageObj(marriageObjRes);
   }
 
   // integrate marriage info for submit
