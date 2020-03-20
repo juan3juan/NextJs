@@ -71,7 +71,8 @@ function H1BEmployee(props) {
     University_Unit_Number: "",
     University_City: "",
     University_State: "",
-    University_Zip_Code: ""
+    University_Zip_Code: "",
+    Work_Location: ""
   });
 
   // useEffect(() => {
@@ -162,7 +163,8 @@ function H1BEmployee(props) {
         University_Unit_Number: records[0].University_Unit_Number,
         University_City: records[0].University_City,
         University_State: records[0].University_State,
-        University_Zip_Code: records[0].University_Zip_Code
+        University_Zip_Code: records[0].University_Zip_Code,
+        Work_Location: records[0].Work_Location
       });
     });
     //setFormContent({ ...formContent, Full_Name: "tes" });

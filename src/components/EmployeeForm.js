@@ -271,6 +271,14 @@ function EmployeeForm(props) {
                   value={props.formContent.Current_Zip_Code}
                   onChange={props.onChange}
                 />
+                <TextInput
+                  label="Work Location (if different from company address)"
+                  type="text"
+                  id="Work_Location"
+                  name="Work_Location"
+                  value={props.formContent.Work_Location}
+                  onChange={props.onChange}
+                />
               </div>
             </div>
             <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
@@ -278,6 +286,7 @@ function EmployeeForm(props) {
                 <label className="head form-control">
                   Foreign Contact Information
                 </label>
+
                 <TextInput
                   label="Consulate Office City"
                   type="text"
@@ -286,6 +295,22 @@ function EmployeeForm(props) {
                   value={props.formContent.Office_City}
                   onChange={props.onChange}
                 />
+                <label className="alert alert-danger">
+                  <i>
+                    Note:
+                    <br />
+                    The city where the nearest U.S. embassy or consulate located
+                    in your home country
+                    <br />
+                    距您在原籍国住址最近的美国使领馆所在城市
+                    <br />
+                    The U.S. consulate offices in China that process H & L visa
+                    applications are Beijing, Guangzhou, Shanghai
+                    <br />
+                    现在可以受理H类及L类签证申请的驻中国领事馆只有北京, 上海,
+                    广州
+                  </i>
+                </label>
 
                 <TextInput
                   label="Consulate Office State or Country"
