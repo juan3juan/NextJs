@@ -212,7 +212,7 @@ function I130Form(props) {
                   type="date"
                   id="D_O_B"
                   name="D_O_B"
-                  value={props.clientContent.D_O_B}
+                  value={props.clientContent.Date_of_Birth}
                   onChange={props.onChange}
                 />
                 <TextInput
@@ -293,7 +293,7 @@ function I130Form(props) {
                   onChange={props.onChange}
                 />
                 <TextInput
-                  label="PR Class of Admission"
+                  label="Petition PR Class of Admission"
                   type="text"
                   id="PR_Class_of_Admission"
                   name="PR_Class_of_Admission"
@@ -301,12 +301,44 @@ function I130Form(props) {
                   onChange={props.onChange}
                 />
                 <TextInput
-                  label="Petitioner"
+                  label="Citizenship Place Of Issuance"
                   type="text"
-                  id="Company_Petitioner"
-                  name="Company_Petitioner"
-                  value={props.caseMmgContent.Company_Petitioner}
-                  onChange={props.onCaseMmgChange}
+                  id="CitizenshipPlaceOfIssuance"
+                  name="CitizenshipPlaceOfIssuance"
+                  value={props.citizenObj.CitizenshipPlaceOfIssuance}
+                  onChange={props.onCitizenChange}
+                />
+                <TextInput
+                  label="Citizenship Date Of Issuance"
+                  type="date"
+                  id="CitizenshipDateOfIssuance"
+                  name="CitizenshipDateOfIssuance"
+                  value={props.citizenObj.CitizenshipDateOfIssuance}
+                  onChange={props.onCitizenChange}
+                />
+                <TextInput
+                  label="PR Date Of Admission"
+                  type="text"
+                  id="PRDateOfAdmission"
+                  name="PRDateOfAdmission"
+                  value={props.citizenObj.PRDateOfAdmission}
+                  onChange={props.onCitizenChange}
+                />
+                <TextInput
+                  label="PR City Or Town"
+                  type="text"
+                  id="PRCityOrTown"
+                  name="PRCityOrTown"
+                  value={props.citizenObj.PRCityOrTown}
+                  onChange={props.onCitizenChange}
+                />
+                <TextInput
+                  label="PR State"
+                  type="text"
+                  id="PRState"
+                  name="PRState"
+                  value={props.citizenObj.PRState}
+                  onChange={props.onCitizenChange}
                 />
               </div>
 
@@ -473,12 +505,10 @@ function I130Form(props) {
                   </>
                 ) : null}
               </div>
-            </div>
 
-            <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-              {/* <div className="section1">
+              <div className="section1">
                 <label className="head form-control">
-                  Marriage Information
+                  Petitioner Marriage Information
                 </label>
                 <TextInput
                   label="Married Times"
@@ -489,6 +519,22 @@ function I130Form(props) {
                   onChange={props.onMarriageChange}
                 />
                 <TextInput
+                  label="Date of Current Marriage"
+                  type="date"
+                  id="DateOfCurrentMarriage"
+                  name="DateOfCurrentMarriage"
+                  value={props.marriageObj.DateOfCurrentMarriage}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Marriage City"
+                  type="text"
+                  id="City"
+                  name="City"
+                  value={props.marriageObj.City}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
                   label="Marriage State"
                   type="text"
                   id="State"
@@ -496,8 +542,439 @@ function I130Form(props) {
                   value={props.marriageObj.State}
                   onChange={props.onMarriageChange}
                 />
-              </div> */}
+                <TextInput
+                  label="Marriage Province"
+                  type="text"
+                  id="Province"
+                  name="Province"
+                  value={props.marriageObj.Province}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Marriage Country"
+                  type="text"
+                  id="Country"
+                  name="Country"
+                  value={props.marriageObj.Country}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 First Name"
+                  type="text"
+                  id="Spouse1_First_Name"
+                  name="Spouse1_First_Name"
+                  value={props.marriageObj.Spouse1_First_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 Last Name"
+                  type="text"
+                  id="Spouse1_Last_Name"
+                  name="Spouse1_Last_Name"
+                  value={props.marriageObj.Spouse1_Last_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 Middle Name"
+                  type="text"
+                  id="Spouse1_Middle_Name"
+                  name="Spouse1_Middle_Name"
+                  value={props.beneficiary.Spouse1_Middle_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Date of Marriage Ended with Spouse1"
+                  type="date"
+                  id="Spouse1DateOfMarriageEnd"
+                  name="Spouse1DateOfMarriageEnd"
+                  value={props.marriageObj.Spouse1DateOfMarriageEnd}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 First Name"
+                  type="text"
+                  id="Spouse2_First_Name"
+                  name="Spouse2_First_Name"
+                  value={props.marriageObj.Spouse2_First_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 Last Name"
+                  type="text"
+                  id="Spouse2_Last_Name"
+                  name="Spouse2_Last_Name"
+                  value={props.marriageObj.Spouse2_Last_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 Middle Name"
+                  type="text"
+                  id="Spouse2_Middle_Name"
+                  name="Spouse2_Middle_Name"
+                  value={props.beneficiary.Spouse2_Middle_Name}
+                  onChange={props.onMarriageChange}
+                />
+                <TextInput
+                  label="Date of Marriage Ended with Spouse2"
+                  type="date"
+                  id="Spouse2DateOfMarriageEnd"
+                  name="Spouse2DateOfMarriageEnd"
+                  value={props.marriageObj.Spouse2DateOfMarriageEnd}
+                  onChange={props.onMarriageChange}
+                />
+              </div>
 
+              <div className="section1">
+                <label className="head form-control">
+                  Petitioner Parents Information
+                </label>
+                <TextInput
+                  label="Parent1 First Name"
+                  type="text"
+                  id="Parent1FirstName"
+                  name="Parent1FirstName"
+                  value={props.parentObj.Parent1FirstName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 Last Name"
+                  type="text"
+                  id="Parent1LastName"
+                  name="Parent1LastName"
+                  value={props.parentObj.Parent1LastName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 Middle Name"
+                  type="text"
+                  id="Parent1MiddleName"
+                  name="Parent1MiddleName"
+                  value={props.parentObj.Parent1MiddleName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 Date of Birth"
+                  type="date"
+                  id="Parent1DOB"
+                  name="Parent1DOB"
+                  value={props.parentObj.Parent1DOB}
+                  onChange={props.onParentChange}
+                />
+                <PickupList
+                  label="Parent1 Gender"
+                  options={props.Gender}
+                  id="Parent1Sex"
+                  name="Parent1Sex"
+                  value={props.parentObj.Parent1Sex}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 Country of Birth"
+                  type="text"
+                  id="Parent1CountryOfBirth"
+                  name="Parent1CountryOfBirth"
+                  value={props.parentObj.Parent1CountryOfBirth}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 City of Residence"
+                  type="text"
+                  id="Parent1CityOfResidence"
+                  name="Parent1CityOfResidence"
+                  value={props.parentObj.Parent1CityOfResidence}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent1 Country of Residence"
+                  type="text"
+                  id="Parent1CountryOfResidence"
+                  name="Parent1CountryOfResidence"
+                  value={props.parentObj.Parent1CountryOfResidence}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 First Name"
+                  type="text"
+                  id="Parent2FirstName"
+                  name="Parent2FirstName"
+                  value={props.parentObj.Parent2FirstName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 Last Name"
+                  type="text"
+                  id="Parent2LastName"
+                  name="Parent2LastName"
+                  value={props.parentObj.Parent2LastName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 Middle Name"
+                  type="text"
+                  id="Parent2MiddleName"
+                  name="Parent2MiddleName"
+                  value={props.parentObj.Parent2MiddleName}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 Date of Birth"
+                  type="date"
+                  id="Parent2DOB"
+                  name="Parent2DOB"
+                  value={props.parentObj.Parent2DOB}
+                  onChange={props.onParentChange}
+                />
+                <PickupList
+                  label="Parent2 Gender"
+                  options={props.Gender}
+                  id="Parent2Sex"
+                  name="Parent2Sex"
+                  value={props.parentObj.Parent2Sex}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 Country of Birth"
+                  type="text"
+                  id="Parent2CountryOfBirth"
+                  name="Parent2CountryOfBirth"
+                  value={props.parentObj.Parent2CountryOfBirth}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 City of Residence"
+                  type="text"
+                  id="Parent2CityOfResidence"
+                  name="Parent2CityOfResidence"
+                  value={props.parentObj.Parent2CityOfResidence}
+                  onChange={props.onParentChange}
+                />
+                <TextInput
+                  label="Parent2 Country of Residence"
+                  type="text"
+                  id="Parent2CountryOfResidence"
+                  name="Parent2CountryOfResidence"
+                  value={props.parentObj.Parent2CountryOfResidence}
+                  onChange={props.onParentChange}
+                />
+              </div>
+              <div className="section1">
+                <label className="head form-control">
+                  Petitioner Employment History
+                </label>
+                <TextInput
+                  label="Name of Employer/Company 1"
+                  type="text"
+                  id="Company1"
+                  name="Company1"
+                  value={props.employmentObj.Company1}
+                  onChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Street"
+                  type="text"
+                  placeholder="Employer1_Street"
+                  id="Employer1_Street"
+                  name="Employer1_Street"
+                  value={props.employmentObj.Employer1_Street}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <PickupList
+                  label="Employer1 Unit"
+                  options={props.Units}
+                  id="Employer1_Unit"
+                  name="Employer1_Unit"
+                  value={props.employmentObj.Employer1_Unit}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Unit Number"
+                  type="text"
+                  id="Employer1_Unit_Number"
+                  name="Employer1_Unit_Number"
+                  value={props.employmentObj.Employer1_Unit_Number}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 City"
+                  type="text"
+                  id="Employer1_City"
+                  name="Employer1_City"
+                  value={props.employmentObj.Employer1_City}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <PickupList
+                  label="Employer1 State"
+                  options={props.states}
+                  id="Employer1_State"
+                  name="Employer1_State"
+                  value={props.employmentObj.Employer1_State}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Zip"
+                  type="text"
+                  id="Employer1_Zip"
+                  name="Employer1_Zip"
+                  value={props.employmentObj.Employer1_Zip}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Province"
+                  type="text"
+                  id="Employer1_Province"
+                  name="Employer1_Province"
+                  value={props.employmentObj.Employer1_Province}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Postal Code"
+                  type="text"
+                  id="Employer1_Postal_Code"
+                  name="Employer1_Postal_Code"
+                  value={props.employmentObj.Employer1_Postal_Code}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Country"
+                  type="text"
+                  id="Employer1_Country"
+                  name="Employer1_Country"
+                  value={props.employmentObj.Employer1_Country}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Your Occupation"
+                  type="text"
+                  id="Employer1_Your_Occupation"
+                  name="Employer1_Your_Occupation"
+                  value={props.employmentObj.Employer1_Your_Occupation}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Date From"
+                  type="date"
+                  id="Employer1_Date_From"
+                  name="Employer1_Date_From"
+                  value={props.employmentObj.Employer1_Date_From}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer1 Date To"
+                  type="date"
+                  id="Employer1_Date_To"
+                  name="Employer1_Date_To"
+                  value={props.employmentObj.Employer1_Date_To}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Name of Employer/Company 2"
+                  type="text"
+                  id="Company2"
+                  name="Company2"
+                  value={props.employmentObj.Company2}
+                  onChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Street"
+                  type="text"
+                  placeholder="Employer2_Street"
+                  id="Employer2_Street"
+                  name="Employer2_Street"
+                  value={props.employmentObj.Employer2_Street}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <PickupList
+                  label="Employer2 Unit"
+                  options={props.Units}
+                  id="Employer2_Unit"
+                  name="Employer2_Unit"
+                  value={props.employmentObj.Employer2_Unit}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Unit Number"
+                  type="text"
+                  id="Employer2_Unit_Number"
+                  name="Employer2_Unit_Number"
+                  value={props.employmentObj.Employer2_Unit_Number}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 City"
+                  type="text"
+                  id="Employer2_City"
+                  name="Employer2_City"
+                  value={props.employmentObj.Employer2_City}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <PickupList
+                  label="Employer2 State"
+                  options={props.states}
+                  id="Employer2_State"
+                  name="Employer2_State"
+                  value={props.employmentObj.Employer2_State}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Zip"
+                  type="text"
+                  id="Employer2_Zip"
+                  name="Employer2_Zip"
+                  value={props.employmentObj.Employer2_Zip}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Province"
+                  type="text"
+                  id="Employer2_Province"
+                  name="Employer2_Province"
+                  value={props.employmentObj.Employer2_Province}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Postal Code"
+                  type="text"
+                  id="Employer2_Postal_Code"
+                  name="Employer2_Postal_Code"
+                  value={props.employmentObj.Employer2_Postal_Code}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Country"
+                  type="text"
+                  id="Employer2_Country"
+                  name="Employer2_Country"
+                  value={props.employmentObj.Employer2_Country}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Your Occupation"
+                  type="text"
+                  id="Employer2_Your_Occupation"
+                  name="Employer2_Your_Occupation"
+                  value={props.employmentObj.Employer2_Your_Occupation}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Date From"
+                  type="date"
+                  id="Employer2_Date_From"
+                  name="Employer2_Date_From"
+                  value={props.employmentObj.Employer2_Date_From}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+                <TextInput
+                  label="Employer2 Date To"
+                  type="date"
+                  id="Employer2_Date_To"
+                  name="Employer2_Date_To"
+                  value={props.employmentObj.Employer2_Date_To}
+                  onEmploymentChange={props.onEmploymentChange}
+                />
+              </div>
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-lg-6 col-xl-6">
               <div className="section1">
                 <label className="head form-control">
                   Beneficiary Basic Information
@@ -593,7 +1070,7 @@ function I130Form(props) {
                   type="date"
                   id="D_O_B"
                   name="D_O_B"
-                  value={props.beneficiary.D_O_B}
+                  value={props.beneficiary.Date_of_Birth}
                   onChange={props.onBeneficiaryChange}
                 />
                 <TextInput
@@ -831,6 +1308,465 @@ function I130Form(props) {
                     />
                   </>
                 ) : null}
+              </div>
+
+              <div className="section1">
+                <label className="head form-control">
+                  Beneficiary Marriage Information
+                </label>
+                <TextInput
+                  label="Married Times"
+                  type="text"
+                  id="MarriedTimes"
+                  name="MarriedTimes"
+                  value={props.marriageObjBene.MarriedTimes}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Date of Current Marriage"
+                  type="date"
+                  id="DateOfCurrentMarriage"
+                  name="DateOfCurrentMarriage"
+                  value={props.marriageObjBene.DateOfCurrentMarriage}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Marriage City"
+                  type="text"
+                  id="City"
+                  name="City"
+                  value={props.marriageObjBene.City}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Marriage State"
+                  type="text"
+                  id="State"
+                  name="State"
+                  value={props.marriageObjBene.State}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Marriage Province"
+                  type="text"
+                  id="Province"
+                  name="Province"
+                  value={props.marriageObjBene.Province}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Marriage Country"
+                  type="text"
+                  id="Country"
+                  name="Country"
+                  value={props.marriageObjBene.Country}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 First Name"
+                  type="text"
+                  id="Spouse1_First_Name"
+                  name="Spouse1_First_Name"
+                  value={props.marriageObjBene.Spouse1_First_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 Last Name"
+                  type="text"
+                  id="Spouse1_Last_Name"
+                  name="Spouse1_Last_Name"
+                  value={props.marriageObjBene.Spouse1_Last_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse1 Middle Name"
+                  type="text"
+                  id="Spouse1_Middle_Name"
+                  name="Spouse1_Middle_Name"
+                  value={props.beneficiary.Spouse1_Middle_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Date of Marriage Ended with Spouse1"
+                  type="date"
+                  id="Spouse1DateOfMarriageEnd"
+                  name="Spouse1DateOfMarriageEnd"
+                  value={props.marriageObjBene.Spouse1DateOfMarriageEnd}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 First Name"
+                  type="text"
+                  id="Spouse2_First_Name"
+                  name="Spouse2_First_Name"
+                  value={props.marriageObjBene.Spouse2_First_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 Last Name"
+                  type="text"
+                  id="Spouse2_Last_Name"
+                  name="Spouse2_Last_Name"
+                  value={props.marriageObjBene.Spouse2_Last_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Spouse2 Middle Name"
+                  type="text"
+                  id="Spouse2_Middle_Name"
+                  name="Spouse2_Middle_Name"
+                  value={props.beneficiary.Spouse2_Middle_Name}
+                  onChange={props.onBeneMarriageChange}
+                />
+                <TextInput
+                  label="Date of Marriage Ended with Spouse2"
+                  type="date"
+                  id="Spouse2DateOfMarriageEnd"
+                  name="Spouse2DateOfMarriageEnd"
+                  value={props.marriageObjBene.Spouse2DateOfMarriageEnd}
+                  onChange={props.onBeneMarriageChange}
+                />
+              </div>
+
+              <div className="section1">
+                <label className="head form-control">
+                  Beneficiary Family Information
+                </label>
+                <TextInput
+                  label="Person 1 First Name"
+                  type="text"
+                  id="P1_First_Name"
+                  name="P1_First_Name"
+                  value={props.familyBene.P1_First_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 1 Middle Name"
+                  type="text"
+                  id="P1_Middle_Name"
+                  name="P1_Middle_Name"
+                  value={props.familyBene.P1_Middle_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 1 Last Name"
+                  type="text"
+                  id="P1_Last_Name"
+                  name="P1_Last_Name"
+                  value={props.familyBene.P1_Last_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 1 Relationship"
+                  type="text"
+                  id="P1_Relationship"
+                  name="P1_Relationship"
+                  value={props.familyBene.P1_Relationship}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 1 Date Of Birth"
+                  type="date"
+                  id="P1_DateOfBirth"
+                  name="P1_DateOfBirth"
+                  value={props.familyBene.P1_DateOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 1 Country Of Birth"
+                  type="text"
+                  id="P1_CountryOfBirth"
+                  name="P1_CountryOfBirth"
+                  value={props.familyBene.P1_CountryOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 First Name"
+                  type="text"
+                  id="P2_First_Name"
+                  name="P2_First_Name"
+                  value={props.familyBene.P2_First_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 Middle Name"
+                  type="text"
+                  id="P2_Middle_Name"
+                  name="P2_Middle_Name"
+                  value={props.familyBene.P2_Middle_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 Last Name"
+                  type="text"
+                  id="P2_Last_Name"
+                  name="P2_Last_Name"
+                  value={props.familyBene.P2_Last_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 Relationship"
+                  type="text"
+                  id="P2_Relationship"
+                  name="P2_Relationship"
+                  value={props.familyBene.P2_Relationship}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 Date Of Birth"
+                  type="date"
+                  id="P2_DateOfBirth"
+                  name="P2_DateOfBirth"
+                  value={props.familyBene.P2_DateOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 2 Country Of Birth"
+                  type="text"
+                  id="P2_CountryOfBirth"
+                  name="P2_CountryOfBirth"
+                  value={props.familyBene.P2_CountryOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 First Name"
+                  type="text"
+                  id="P3_First_Name"
+                  name="P3_First_Name"
+                  value={props.familyBene.P3_First_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 Middle Name"
+                  type="text"
+                  id="P3_Middle_Name"
+                  name="P3_Middle_Name"
+                  value={props.familyBene.P3_Middle_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 Last Name"
+                  type="text"
+                  id="P3_Last_Name"
+                  name="P3_Last_Name"
+                  value={props.familyBene.P3_Last_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 Relationship"
+                  type="text"
+                  id="P3_Relationship"
+                  name="P3_Relationship"
+                  value={props.familyBene.P3_Relationship}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 Date Of Birth"
+                  type="date"
+                  id="P3_DateOfBirth"
+                  name="P3_DateOfBirth"
+                  value={props.familyBene.P3_DateOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 3 Country Of Birth"
+                  type="text"
+                  id="P3_CountryOfBirth"
+                  name="P3_CountryOfBirth"
+                  value={props.familyBene.P3_CountryOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 First Name"
+                  type="text"
+                  id="P4_First_Name"
+                  name="P4_First_Name"
+                  value={props.familyBene.P4_First_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 Middle Name"
+                  type="text"
+                  id="P4_Middle_Name"
+                  name="P4_Middle_Name"
+                  value={props.familyBene.P4_Middle_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 Last Name"
+                  type="text"
+                  id="P4_Last_Name"
+                  name="P4_Last_Name"
+                  value={props.familyBene.P4_Last_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 Relationship"
+                  type="text"
+                  id="P4_Relationship"
+                  name="P4_Relationship"
+                  value={props.familyBene.P4_Relationship}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 Date Of Birth"
+                  type="date"
+                  id="P4_DateOfBirth"
+                  name="P4_DateOfBirth"
+                  value={props.familyBene.P4_DateOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 4 Country Of Birth"
+                  type="text"
+                  id="P4_CountryOfBirth"
+                  name="P4_CountryOfBirth"
+                  value={props.familyBene.P4_CountryOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 First Name"
+                  type="text"
+                  id="P5_First_Name"
+                  name="P5_First_Name"
+                  value={props.familyBene.P5_First_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 Middle Name"
+                  type="text"
+                  id="P5_Middle_Name"
+                  name="P5_Middle_Name"
+                  value={props.familyBene.P5_Middle_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 Last Name"
+                  type="text"
+                  id="P5_Last_Name"
+                  name="P5_Last_Name"
+                  value={props.familyBene.P5_Last_Name}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 Relationship"
+                  type="text"
+                  id="P5_Relationship"
+                  name="P5_Relationship"
+                  value={props.familyBene.P5_Relationship}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 Date Of Birth"
+                  type="date"
+                  id="P5_DateOfBirth"
+                  name="P5_DateOfBirth"
+                  value={props.familyBene.P5_DateOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+                <TextInput
+                  label="Person 5 Country Of Birth"
+                  type="text"
+                  id="P5_CountryOfBirth"
+                  name="P5_CountryOfBirth"
+                  value={props.familyBene.P5_CountryOfBirth}
+                  onChange={props.onFamilyBeneChange}
+                />
+              </div>
+
+              <div className="section1">
+                <label className="head form-control">
+                  Beneficiary Employment History
+                </label>
+                <TextInput
+                  label="Name of Current Employer/Company(if applicable)"
+                  type="text"
+                  id="Company1"
+                  name="Company1"
+                  value={props.employmentBene.Company1}
+                  onChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Street"
+                  type="text"
+                  placeholder="Employer1_Street"
+                  id="Employer1_Street"
+                  name="Employer1_Street"
+                  value={props.employmentBene.Employer1_Street}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <PickupList
+                  label="Employer1 Unit"
+                  options={props.Units}
+                  id="Employer1_Unit"
+                  name="Employer1_Unit"
+                  value={props.employmentBene.Employer1_Unit}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Unit Number"
+                  type="text"
+                  id="Employer1_Unit_Number"
+                  name="Employer1_Unit_Number"
+                  value={props.employmentBene.Employer1_Unit_Number}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 City"
+                  type="text"
+                  id="Employer1_City"
+                  name="Employer1_City"
+                  value={props.employmentBene.Employer1_City}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <PickupList
+                  label="Employer1 State"
+                  options={props.states}
+                  id="Employer1_State"
+                  name="Employer1_State"
+                  value={props.employmentBene.Employer1_State}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Zip"
+                  type="text"
+                  id="Employer1_Zip"
+                  name="Employer1_Zip"
+                  value={props.employmentBene.Employer1_Zip}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Province"
+                  type="text"
+                  id="Employer1_Province"
+                  name="Employer1_Province"
+                  value={props.employmentBene.Employer1_Province}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Postal Code"
+                  type="text"
+                  id="Employer1_Postal_Code"
+                  name="Employer1_Postal_Code"
+                  value={props.employmentBene.Employer1_Postal_Code}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Country"
+                  type="text"
+                  id="Employer1_Country"
+                  name="Employer1_Country"
+                  value={props.employmentBene.Employer1_Country}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
+                <TextInput
+                  label="Employer1 Date From"
+                  type="date"
+                  id="Employer1_Date_From"
+                  name="Employer1_Date_From"
+                  value={props.employmentBene.Employer1_Date_From}
+                  onEmploymentBeneChange={props.onEmploymentBeneChange}
+                />
               </div>
 
               <div className="section1">
