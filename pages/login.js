@@ -107,8 +107,16 @@ function Login(props) {
       zohoApi.searchRecordByCriteria(props.criteria).then(records => {
         console.log("records");
         console.log(records.length);
-        if (records[0].pin_Petition === userData.pin) {
-          let encryptID = Base64.encode(records[0].id);
+        let recordFind = records;
+        if (records.length > 1) {
+          recordFind = records.find(function(record) {
+            return record.Name === props.criteria;
+          });
+        }
+        console.log("recordFind");
+        console.log(recordFind);
+        if (recordFind.pin_Petition === userData.pin) {
+          let encryptID = Base64.encode(recordFind.id);
           const url = "/questionnaire/" + encryptID;
           console.log(url);
           Router.push(url);
