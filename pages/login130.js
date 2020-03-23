@@ -108,10 +108,13 @@ function Login130(props) {
         console.log(records.length);
         let recordFind = records;
         if (records.length > 1) {
-          recordFind = records.find(function(record) {
-            return record.Name === props.criteria;
-          });
+          recordFind = [
+            records.find(function(record) {
+              return record.Name === props.criteria;
+            })
+          ];
         }
+        recordFind = recordFind[0];
         console.log("recordFind");
         console.log(recordFind);
         if (recordFind.PIN === userData.pin) {
