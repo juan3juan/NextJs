@@ -693,63 +693,63 @@ function I130(props) {
           if (splits[0].includes("P1_First_Name"))
             ResBene.P1_First_Name = splits[1].trim();
           if (splits[0].includes("P1_Middle_Name"))
-            ResBene.P1_First_Name = splits[1].trim();
+            ResBene.P1_Middle_Name = splits[1].trim();
           if (splits[0].includes("P1_Last_Name"))
-            ResBene.P1_First_Name = splits[1].trim();
+            ResBene.P1_Last_Name = splits[1].trim();
           if (splits[0].includes("P1_Relationship"))
-            ResBene.P1_First_Name = splits[1].trim();
+            ResBene.P1_Relationship = splits[1].trim();
           if (splits[0].includes("P1_DateOfBirth"))
-            ResBene.P1_First_Name = splits[1].trim();
+            ResBene.P1_DateOfBirth = splits[1].trim();
           if (splits[0].includes("P1_CountryOfBirth"))
-            ResBene.P1_First_Name = splits[1].trim();
+            ResBene.P1_CountryOfBirth = splits[1].trim();
           if (splits[0].includes("P2_First_Name"))
             ResBene.P2_First_Name = splits[1].trim();
           if (splits[0].includes("P2_Middle_Name"))
-            ResBene.P2_First_Name = splits[1].trim();
+            ResBene.P2_Middle_Name = splits[1].trim();
           if (splits[0].includes("P2_Last_Name"))
-            ResBene.P2_First_Name = splits[1].trim();
+            ResBene.P2_Last_Name = splits[1].trim();
           if (splits[0].includes("P2_Relationship"))
-            ResBene.P2_First_Name = splits[1].trim();
+            ResBene.P2_Relationship = splits[1].trim();
           if (splits[0].includes("P2_DateOfBirth"))
-            ResBene.P2_First_Name = splits[1].trim();
+            ResBene.P2_DateOfBirth = splits[1].trim();
           if (splits[0].includes("P2_CountryOfBirth"))
-            ResBene.P2_First_Name = splits[1].trim();
+            ResBene.P2_CountryOfBirth = splits[1].trim();
           if (splits[0].includes("P3_First_Name"))
             ResBene.P3_First_Name = splits[1].trim();
           if (splits[0].includes("P3_Middle_Name"))
-            ResBene.P3_First_Name = splits[1].trim();
+            ResBene.P3_Middle_Name = splits[1].trim();
           if (splits[0].includes("P3_Last_Name"))
-            ResBene.P3_First_Name = splits[1].trim();
+            ResBene.P3_Last_Name = splits[1].trim();
           if (splits[0].includes("P3_Relationship"))
-            ResBene.P3_First_Name = splits[1].trim();
+            ResBene.P3_Relationship = splits[1].trim();
           if (splits[0].includes("P3_DateOfBirth"))
-            ResBene.P3_First_Name = splits[1].trim();
+            ResBene.P3_DateOfBirth = splits[1].trim();
           if (splits[0].includes("P3_CountryOfBirth"))
-            ResBene.P3_First_Name = splits[1].trim();
+            ResBene.P3_CountryOfBirth = splits[1].trim();
           if (splits[0].includes("P4_First_Name"))
             ResBene.P4_First_Name = splits[1].trim();
           if (splits[0].includes("P4_Middle_Name"))
-            ResBene.P4_First_Name = splits[1].trim();
+            ResBene.P4_Middle_Name = splits[1].trim();
           if (splits[0].includes("P4_Last_Name"))
-            ResBene.P4_First_Name = splits[1].trim();
+            ResBene.P4_Last_Name = splits[1].trim();
           if (splits[0].includes("P4_Relationship"))
-            ResBene.P4_First_Name = splits[1].trim();
+            ResBene.P4_Relationship = splits[1].trim();
           if (splits[0].includes("P4_DateOfBirth"))
-            ResBene.P4_First_Name = splits[1].trim();
+            ResBene.P4_DateOfBirth = splits[1].trim();
           if (splits[0].includes("P4_CountryOfBirth"))
-            ResBene.P4_First_Name = splits[1].trim();
+            ResBene.P4_CountryOfBirth = splits[1].trim();
           if (splits[0].includes("P5_First_Name"))
             ResBene.P5_First_Name = splits[1].trim();
           if (splits[0].includes("P5_Middle_Name"))
-            ResBene.P5_First_Name = splits[1].trim();
+            ResBene.P5_Middle_Name = splits[1].trim();
           if (splits[0].includes("P5_Last_Name"))
-            ResBene.P5_First_Name = splits[1].trim();
+            ResBene.P5_Last_Name = splits[1].trim();
           if (splits[0].includes("P5_Relationship"))
-            ResBene.P5_First_Name = splits[1].trim();
+            ResBene.P5_Relationship = splits[1].trim();
           if (splits[0].includes("P5_DateOfBirth"))
-            ResBene.P5_First_Name = splits[1].trim();
+            ResBene.P5_DateOfBirth = splits[1].trim();
           if (splits[0].includes("P5_CountryOfBirth"))
-            ResBene.P5_First_Name = splits[1].trim();
+            ResBene.P5_CountryOfBirth = splits[1].trim();
         }
       }
       setFamilyBene(ResBene);
@@ -774,11 +774,31 @@ function I130(props) {
       for (let i = 0; i < infoBene.length; i++) {
         if (infoBene[i] !== undefined && infoBene[i] !== null) {
           let splits = infoBene[i].split(":");
-          if (splits[0].includes("P1_First_Name"))
-            ResBene.P1_First_Name = splits[1].trim();
+          if (splits[0].includes("Company1"))
+            ResBene.Company1 = splits[1].trim();
+          if (splits[0].includes("Employer1_Street"))
+            ResBene.Employer1_Street = splits[1].trim();
+          if (splits[0].includes("Employer1_Unit"))
+            ResBene.Employer1_Unit = splits[1].trim();
+          if (splits[0].includes("Employer1_Unit_Number"))
+            ResBene.Employer1_Unit_Number = splits[1].trim();
+          if (splits[0].includes("Employer1_City"))
+            ResBene.Employer1_City = splits[1].trim();
+          if (splits[0].includes("Employer1_State"))
+            ResBene.Employer1_State = splits[1].trim();
+          if (splits[0].includes("Employer1_Zip"))
+            ResBene.Employer1_Zip = splits[1].trim();
+          if (splits[0].includes("Employer1_Province"))
+            ResBene.Employer1_Province = splits[1].trim();
+          if (splits[0].includes("Employer1_Postal_Code"))
+            ResBene.Employer1_Postal_Code = splits[1].trim();
+          if (splits[0].includes("Employer1_Country"))
+            ResBene.Employer1_Country = splits[1].trim();
+          if (splits[0].includes("Employer1_Date_From"))
+            ResBene.Employer1_Date_From = splits[1].trim();
         }
       }
-      setFamilyBene(ResBene);
+      setEmploymentBene(ResBene);
     }
   }
 
